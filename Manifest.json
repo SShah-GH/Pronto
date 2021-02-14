@@ -1,0 +1,12 @@
+{
+    "manifest_version": 2,
+    "name": "Extension Name",
+    "description": "Testing",
+    "version": "1.0",
+    
+    "browser_action": {
+        "default_icon": "images/stonks.png",
+        "default_popup": "html/popup.html",
+        "default_title": "Stonks" 
+    }
+}
