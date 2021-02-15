@@ -1,12 +1,15 @@
 {
     "manifest_version": 2,
-    "name": "Extension Name",
-    "description": "Testing",
+    "name": "Stonks Launcher",
+    "description": "TO THE MOON",
     "version": "1.0",
+    "icons": {"128": "images/stocks_128.png"},
     
     "browser_action": {
         "default_icon": "images/stonks.png",
         "default_popup": "html/popup.html",
         "default_title": "Stonks" 
-    }
+    },
+
+    "permissions": ["activeTab"]
 }
