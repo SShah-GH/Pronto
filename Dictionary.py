@@ -4,16 +4,18 @@ from fuzzywuzzy import process
 # importing requests package
 import requests     
  
-def NewsFromBBC():
-     
+def NewsFromBBC(cat):
+    if cat != 'entertainment' and cat != 'general' and cat != 'health' and cat != 'science' and cat != 'sports' and cat != 'technology' and cat != 'business':
+        print('please enter a correct category you can choose from : entertainment, general, health, science, sports, technology, business')
+        return;
     # BBC news api
     # following query parameters are used
     # source, sortBy and apiKey
     query_params = {
       "sortBy": "top",
-      "apiKey": "4dbc17e007ab436fb66416009dfb59a8"
+      "apiKey": "39810cc78e384d3a9c416070fdeddc64",
     }
-    main_url = " https://newsapi.org/v2/top-headlines?country=us&apiKey=4dbc17e007ab436fb66416009dfb59a8"
+    main_url = " https://newsapi.org/v2/top-headlines?country=us&category=" + cat + "&apiKey=39810cc78e384d3a9c416070fdeddc64"
  
     # fetching data in json format
     res = requests.get(main_url, params=query_params)
@@ -45,6 +47,7 @@ def NewsFromBBC():
  
 # Driver Code
 if __name__ == '__main__':
-     
+    print('Enter category for filtering news articles. You can choose from entertainment, general, health, science, sports, technology, business')
+    x = input()
     # function call
-    NewsFromBBC() 
+    NewsFromBBC(x) 
