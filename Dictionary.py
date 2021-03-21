@@ -14,6 +14,7 @@ def NewsFromBBC(cat):
     query_params = {
       "sortBy": "top",
       "apiKey": "39810cc78e384d3a9c416070fdeddc64",
+      "category"  : cat
     }
     main_url = " https://newsapi.org/v2/top-headlines?country=us&category=" + cat + "&apiKey=39810cc78e384d3a9c416070fdeddc64"
  
