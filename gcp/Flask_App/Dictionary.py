@@ -7,7 +7,7 @@ import requests
 def NewsFromBBC(cat):
     if cat != 'entertainment' and cat != 'general' and cat != 'health' and cat != 'science' and cat != 'sports' and cat != 'technology' and cat != 'business':
         print('please enter a correct category you can choose from : entertainment, general, health, science, sports, technology, business')
-        return;
+        return
     # BBC news api
     # following query parameters are used
     # source, sortBy and apiKey
