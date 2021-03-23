@@ -75,7 +75,32 @@ div.flex-item{
     transition: background-color 0.4s ease-in-out;
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 20px;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
 }
 div.flex-item:hover{
     background-color: #3A506B;
 }
+
+#HL2{
+    animation-delay: .25s;
+}
+
+#HL3{
+    animation-delay: .5s;
+}
+
+#HL4{
+    animation-delay: .75s;
+
+}
+
+#HL5{
+    animation-delay: 1s;
+}
+
+
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+  }
