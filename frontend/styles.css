@@ -4,7 +4,7 @@ body {
     margin: 0;
     min-height: 180px;
     padding: 0;
-    width: 400px;
+    width: 800px;
     background-color: #1C2541 
  }
 
@@ -17,6 +17,10 @@ body {
     font-weight: 400;
     margin: 0;
     color: #FBFEF9;
+ }
+
+ #ExtensionTitle{
+    font-family: 'Newsreader', serif;
  }
  span{
      font-size: 30px;
@@ -61,6 +65,7 @@ body {
     margin: 10px;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 div.flex-item{
     padding: 5px 5px 5px 5px;
@@ -68,6 +73,8 @@ div.flex-item{
     border-radius: 10px 10px 10px 10px;
     background-color: #3a506b00;
     transition: background-color 0.4s ease-in-out;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
 }
 div.flex-item:hover{
     background-color: #3A506B;
