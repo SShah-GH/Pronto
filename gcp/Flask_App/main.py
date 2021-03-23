@@ -22,6 +22,7 @@ def RetreiveNews(cat):
     res = requests.get(main_url, params=query_params)
     return res
 
+
 def listFill(category_list, top_results):
     while(len(top_results) < 5): #if list is not fall we will pull articles from a random category
         rand_cat = random.choice(category_list)
@@ -31,7 +32,6 @@ def listFill(category_list, top_results):
                 break
 
     return top_results
-
 
 
 def getTop5(category_list):
@@ -68,7 +68,6 @@ def NewsHeadlines():
     cat_list = categories.split()
 
     top_results = getTop5(cat_list)
-
  
     # empty list which will 
     # contain all trending news
@@ -91,7 +90,7 @@ def NewsHeadlines():
 
         article_num = article_num + 1     
     
-    #convcert to json and return
+    # Convert to json and return
     news_results = top_results.json()
 
     return news_results
