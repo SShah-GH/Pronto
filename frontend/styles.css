@@ -44,6 +44,15 @@ body {
 .topbar span:hover{
     opacity: 0.4;
 }
+#circle{
+    position: absolute;
+    left: 0;
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+}
 
 /* Content */
 .flex-container{
