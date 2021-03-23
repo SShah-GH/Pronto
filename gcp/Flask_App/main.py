@@ -63,24 +63,9 @@ def getTop5(category_list):
 
 @app.route("/", methods=['POST'])
 def NewsHeadlines():
-    # Get data from input json
-    query_params = request.form.to_dict(flat=False)
-
-    
-    #TODO INPUT THIS AS THE STING GIVEN FROM HTTPS INSTEAD OF AS TERMINAL INPUT
-    # Driver Code 
-    cat_list = [] #list used as container for all the input categories
-    x = input()
-    if x != "":
-        cat_list.append(x)
-    y = input()
-    if y != x: #is a unique category input
-        if y != "":
-            cat_list.append(y)
-    z = input()
-    if z != x and z != y: #is a unique category input
-         if z != "":
-             cat_list.append(z)
+    # Get data from url
+    categories = request.args.get('categories', default = 'none', type = string)
+    cat_list = categories.split()
 
     top_results = getTop5(cat_list)
 
@@ -88,7 +73,6 @@ def NewsHeadlines():
     # empty list which will 
     # contain all trending news
     results = []
-    
     
     article_num = 0
     #iterate through top articles
