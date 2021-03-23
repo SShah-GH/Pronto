@@ -1,1 +1,3 @@
-//I don't know javascript yet, but here it is lol
+function wasClicked(){
+    document.getElementById("HL1").innerHTML = "It worked!";
+}
