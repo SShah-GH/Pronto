@@ -4,21 +4,37 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Test Setting, From Chome Example</title>
+  <link rel="stylesheet" href="options.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,800&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+  <title>PRONTO SETTINGS</title>
 </head>
 <body>
 
-Favorite color:
+<div id = "settingsTitle">PRONTO SETTINGS</div>
+<!--
+<div id = "categoryPicker">Favorite color:</div>
 <select id="color">
  <option value="red">red</option>
  <option value="green">green</option>
  <option value="blue">blue</option>
  <option value="yellow">yellow</option>
-</select>
+</select>-->
 
-<label>
+<label class = "categoryOptions">
+  <input type="checkbox" id="like"><p id="like">All</p>
   <input type="checkbox" id="like">
-  I like colors.
+  Business
+  <input type="checkbox" id="hate">
+  Entertainment
+  <input type="checkbox" id="hate">
+  Health
+  <input type="checkbox" id="like">
+  Science
+  <input type="checkbox" id="like">
+  Sports
+  <input type="checkbox" id="like">
+  Technology
 </label>
 
 <div id="status"></div>
@@ -27,3 +43,7 @@ Favorite color:
 <script src="options.js"></script>
 </body>
 </html>
+
+
+
+
