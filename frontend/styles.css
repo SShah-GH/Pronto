@@ -6,7 +6,7 @@ body {
     margin: 0;
     min-height: 180px;
     padding: 0;
-    width: 500px;
+    width: 800px;
     background-color: #1C2541 
  }
 
@@ -19,6 +19,10 @@ body {
     font-weight: 400;
     margin: 0;
     color: #ffffff;
+ }
+
+ #ExtensionTitle{
+    font-family: 'Newsreader', serif;
  }
  span{
      font-size: 30px;
@@ -64,6 +68,7 @@ body {
     margin: 10px;
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 div.flex-item{
     padding: 5px 5px 5px 5px;
@@ -71,6 +76,10 @@ div.flex-item{
     border-radius: 10px 10px 10px 10px;
     background-color: #3a506b00;
     transition: background-color 0.4s ease-in-out;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
 }
 div.flex-item:hover{
     background-color: #3A506B;
@@ -98,3 +107,26 @@ a.botflex:visited{
     text-decoration: underline;
     color: #ffffff;
 }
+
+#HL2{
+    animation-delay: .25s;
+}
+
+#HL3{
+    animation-delay: .5s;
+}
+
+#HL4{
+    animation-delay: .75s;
+
+}
+
+#HL5{
+    animation-delay: 1s;
+}
+
+
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
+  }
