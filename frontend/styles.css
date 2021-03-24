@@ -76,7 +76,7 @@ div.flex-item{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 20px;
     opacity: 0;
-    animation: fadeIn 2s forwards;
+    animation: fadeIn 1s forwards;
 }
 div.flex-item:hover{
     background-color: #3A506B;
