@@ -76,7 +76,7 @@ div.flex-item{
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 20px;
     opacity: 0;
-    animation: fadeIn 2s forwards;
+    
 }
 div.flex-item:hover{
     background-color: #3A506B;
@@ -104,22 +104,29 @@ a.botflex:visited{
     text-decoration: underline;
     color: #ffffff;
 }
+#HL1{
+    animation: fadeIn 2.0s forwards;
+}
 
 #HL2{
-    animation-delay: .25s;
+    animation: fadeIn 2.0s forwards;
+    animation-delay: 0.1875s;
 }
 
 #HL3{
-    animation-delay: .5s;
+    animation: fadeIn 2.0s forwards;
+    animation-delay: 0.375s;
 }
 
 #HL4{
-    animation-delay: .75s;
+    animation: fadeIn 2.0s forwards;
+    animation-delay: 0.5625s;
 
 }
 
 #HL5{
-    animation-delay: 1s;
+    animation: fadeIn 1.8s forwards;
+    animation-delay: 0.75s;
 }
 
 
