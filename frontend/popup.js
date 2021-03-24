@@ -1,4 +1,13 @@
-//Declare globals
+/*
+
+Javascript for the extension main popup, Version 1.0.0
+Developed by Preston Rooker and Spencer Stice
+
+*/
+
+
+
+////////////Global Variables/////////////
 var isOneOpen = false;
 var isTwoOpen = false;
 var isThreeOpen = false;
@@ -12,7 +21,9 @@ var headlineFour = "HL4";
 var headlineFive = "HL5";
 var id = null;
 
-//Options Page Button
+
+//////////////////////////  Settings ////////////////////////////////
+
 document.querySelector('#go-to-options').addEventListener("click", function() {
   if (chrome.runtime.openOptionsPage) {
     chrome.runtime.openOptionsPage();
@@ -58,18 +69,35 @@ document.addEventListener('DOMContentLoaded',setColor);
 
 
 
+///////////////////  Animations /////////////////////////////////////////////
+
 
 function expandDown(elemId){
   var elem = document.getElementById(elemId);
   var pad = 5;
   clearInterval(id);
-  id = setInterval(frame,3);
+  id = setInterval(frame,5);
   function frame(){
     if(pad==50){
       clearInterval(id);
     }
     else{
-      pad = pad + 0.5;
+      pad = pad + 1;
+      elem.style.paddingBottom = pad + "px";
+    }
+  }
+}
+function expandUp(elemId){
+  var elem = document.getElementById(elemId);
+  var pad = 50;
+  clearInterval(id);
+  id = setInterval(frame,3);
+  function frame(){
+    if(pad==5){
+      clearInterval(id);
+    }
+    else{
+      pad = pad - 1;
       elem.style.paddingBottom = pad + "px";
     }
   }
@@ -83,9 +111,7 @@ document.querySelector("#HL1").addEventListener("click", function() {
   isOneOpen = true;
   }
   else{
-    document.getElementById(headlineOne).style.padding = "5px";
-    document.getElementById(headlineOne).style.textAlign = "left";
-    document.getElementById(headlineOne).style.borderRadius = "10px";
+    expandUp(headlineOne);
     document.getElementById(headlineOne).style.backgroundColor = "";
     isOneOpen = false;
   }
@@ -99,9 +125,7 @@ document.querySelector("#HL2").addEventListener("click", function() {
 
   }
   else{
-    document.getElementById(headlineTwo).style.padding = "5px";
-    document.getElementById(headlineTwo).style.textAlign = "left";
-    document.getElementById(headlineTwo).style.borderRadius = "10px";
+    expandUp(headlineTwo);
     document.getElementById(headlineTwo).style.backgroundColor = "";
     isTwoOpen = false;
   }
@@ -113,9 +137,7 @@ document.querySelector("#HL3").addEventListener("click", function() {
   isThreeOpen = true;
   }
   else{
-    document.getElementById(headlineThree).style.padding = "5px";
-    document.getElementById(headlineThree).style.textAlign = "left";
-    document.getElementById(headlineThree).style.borderRadius = "10px";
+    expandUp(headlineThree);
     document.getElementById(headlineThree).style.backgroundColor = "";
     isThreeOpen = false;
   }
@@ -127,9 +149,7 @@ document.querySelector("#HL4").addEventListener("click", function() {
   isFourOpen = true;
   }
   else{
-    document.getElementById(headlineFour).style.padding = "5px";
-    document.getElementById(headlineFour).style.textAlign = "left";
-    document.getElementById(headlineFour).style.borderRadius = "10px";
+    expandUp(headlineFour);
     document.getElementById(headlineFour).style.backgroundColor = "";
     isFourOpen = false;
   }
@@ -141,9 +161,7 @@ document.querySelector("#HL5").addEventListener("click", function() {
   isFiveOpen = true;
   }
   else{
-    document.getElementById(headlineFive).style.padding = "5px";
-    document.getElementById(headlineFive).style.textAlign = "left";
-    document.getElementById(headlineFive).style.borderRadius = "10px";
+    expandUp(headlineFive);
     document.getElementById(headlineFive).style.backgroundColor = "";
     isFiveOpen = false;
   }
