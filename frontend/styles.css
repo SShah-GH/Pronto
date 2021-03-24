@@ -10,10 +10,10 @@ body {
 
 
  /* Top Bar */
- p{
+ em{
     font-family:'Menlo', monospace;
     text-align: center;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: 400;
     margin: 0;
     color: #FBFEF9;
@@ -35,7 +35,7 @@ body {
     position: relative;
     align-items: center;
 }
-.topbar p{
+.topbar em{
     flex-grow: 1;
 }
 .topbar i{
