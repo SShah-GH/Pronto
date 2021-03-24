@@ -12,53 +12,7 @@ var headlineFour = "HL4";
 var headlineFive = "HL5";
 var id = null;
 
-<<<<<<< HEAD
-function closeOthers(beingOpened){
-  if(isOneOpen && healineOne != beingOpened)
-  {
-    document.getElementById(headlineOne).style.padding = "5px";
-    document.getElementById(headlineOne).style.textAlign = "left";
-    document.getElementById(headlineOne).style.borderRadius = "10px";
-    document.getElementById(headlineOne).style.backgroundColor = "#3a506b00";
-    isOneOpen = false;
-  }
-  if(isTwoOpen && healineTwo != beingOpened)
-  {
-    document.getElementById(headlineOne).style.padding = "5px";
-    document.getElementById(headlineOne).style.textAlign = "left";
-    document.getElementById(headlineOne).style.borderRadius = "10px";
-    document.getElementById(headlineOne).style.backgroundColor = "#3a506b00";
-    isTwoOpen = false;
-  }
-  if(isThreeOpen && healineThree != beingOpened)
-  {
-    document.getElementById(headlineOne).style.padding = "5px";
-    document.getElementById(headlineOne).style.textAlign = "left";
-    document.getElementById(headlineOne).style.borderRadius = "10px";
-    document.getElementById(headlineOne).style.backgroundColor = "#3a506b00";
-    isThreeOpen = false;
-  }
-  if(isFourOpen && healineFour != beingOpened)
-  {
-    document.getElementById(headlineOne).style.padding = "5px";
-    document.getElementById(headlineOne).style.textAlign = "left";
-    document.getElementById(headlineOne).style.borderRadius = "10px";
-    document.getElementById(headlineOne).style.backgroundColor = "#3a506b00";
-    isFourOpen = false;
-  }
-  if(isFiveOpen && healineFive != beingOpened)
-  {
-    document.getElementById(headlineOne).style.padding = "5px";
-    document.getElementById(headlineOne).style.textAlign = "left";
-    document.getElementById(headlineOne).style.borderRadius = "10px";
-    document.getElementById(headlineOne).style.backgroundColor = "#3a506b00";
-    isFiveOpen = false;
-  }
-}
-
-=======
 //Options Page Button
->>>>>>> 1ca0d153429058afae8273546686b7f31fcf2a2d
 document.querySelector('#go-to-options').addEventListener("click", function() {
   if (chrome.runtime.openOptionsPage) {
     chrome.runtime.openOptionsPage();
