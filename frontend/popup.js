@@ -13,6 +13,7 @@ var isTwoOpen = false;
 var isThreeOpen = false;
 var isFourOpen = false;
 var isFiveOpen = false;
+var isStoryOpen = false;
 var headlineOne = "HL1";
 var headlineTwo = "HL2";
 var headlineThree = "HL3";
@@ -121,6 +122,7 @@ document.querySelector("#HL2").addEventListener("click", function() {
   document.getElementById(headlineTwo).style.backgroundColor = "#3A506B";
   expandDown(headlineTwo);
   isTwoOpen = true;
+
   }
   else{
     expandUp(headlineTwo);
