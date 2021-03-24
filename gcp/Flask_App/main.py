@@ -78,7 +78,7 @@ def getTop5(category_list):
     return top_results
 
 
-@app.route("/", methods=['POST'])
+@app.route("/", methods=['GET'])
 def NewsHeadlines(request):
     print('Starting NewsHeadlines')
 
