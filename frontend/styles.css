@@ -12,17 +12,14 @@ body {
 
 
  /* Top Bar */
- em{
-    font-family:'Menlo', monospace;
+
+ #ExtensionTitle{
+    font-family: 'Newsreader', serif;
     text-align: center;
     font-size: 35px;
     font-weight: 400;
     margin: 0;
     color: #ffffff;
- }
-
- #ExtensionTitle{
-    font-family: 'Newsreader', serif;
  }
  span{
      font-size: 30px;
@@ -37,7 +34,7 @@ body {
     position: relative;
     align-items: center;
 }
-.topbar em{
+.topbar p{
     flex-grow: 1;
 }
 .topbar i{
@@ -62,7 +59,7 @@ body {
 
 /* Content */
 .flex-container{
-    color: #e2e2e2;
+    color: #ffffff;
     padding-bottom: 10px;
     font-size: 16px;
     margin: 10px;
