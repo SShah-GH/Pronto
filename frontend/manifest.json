@@ -21,9 +21,7 @@
         "default_popup": "popup.html"
     },
     "background": {
-        "service_worker": "background.js",
-        "scripts": ["background.js"],
-        "persistent": false
+        "service_worker": "popup.js"
     },
     "options_page": "settings/options.html",
     "permissions": [
