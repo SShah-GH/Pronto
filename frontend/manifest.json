@@ -9,14 +9,15 @@
         "https://*/"
     ],
     "icons":{
-        "128" : "icon128.png"
+        "128" : "images/ProntoIcon128.png"
     },
     "action": {
         "default_icon": {
-            "16": "images/icon16.png",
-            "32": "images/icon32.png"
+            "128":"images/ProntoIcon128.png",
+            "48": "images/ProntoIcon(V8)48.png",
+            "32": "images/ProntoIcon(V1)32.png"
         },
-        "default_title": "Press Me Poggers",
+        "default_title": "Pronto: Click Here",
         "default_popup": "popup.html"
     },
     "background": {
