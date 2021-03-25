@@ -16,19 +16,32 @@ def RetreiveNews(cat):
     # source, sortBy and apiKey
     query_params = {
       "sortBy": "top",
-      "apiKey": "39810cc78e384d3a9c416070fdeddc64",
+      "apiKey": "1c1a415df0f04b0199236dec9d3baf56",
       "category"  : cat
     }
-    main_url = " https://newsapi.org/v2/top-headlines?country=us&category=" + cat + "&apiKey=39810cc78e384d3a9c416070fdeddc64"
+    main_url = " https://newsapi.org/v2/top-headlines?country=us&category=" + cat + "&apiKey=1c1a415df0f04b0199236dec9d3baf56"
  
     # fetching data in json format
     res = requests.get(main_url, params=query_params)
-    return res
+    top_articles = res.json()
+    article = top_articles["articles"]
+
+    results = []
+
+    for ar in article:
+        results.append(ar)
+
+    return results
 
 
 def listFill(category_list, top_results):
-    while(len(top_results) < 5): #if list is not fall we will pull articles from a random category
+
+    if len(category_list) == 0:
+        rand_cat = 'general'
+    else:
         rand_cat = random.choice(category_list)
+
+    while(len(top_results) < 5): #if list is not full we will pull articles from a random category    
         for ar in RetreiveNews(rand_cat):
             if ar not in top_results:
                 top_results.append(ar)
@@ -39,14 +52,15 @@ def listFill(category_list, top_results):
 
 def getTop5(category_list):
     top_results = [] #this list will store our top 5 articles
-    general_article_set = set()
-    for ar in RetreiveNews('general'):
-       general_article_set.add(ar) #creating a set of general articles, ranked only by popularity, not category
+    general_article_set = []
+    print_first = True
+    for ar in RetreiveNews('general'):  #TODO FIND OUT WHAT THE RESPONSE OBJECT RETURNS
+       general_article_set.append(ar) #creating a set of general articles, ranked only by popularity, not category
     if len(category_list) == 0: # if we have no categories selected, we just generate our list using our general set
         for i in range(5):
-            elem = general_article_set.pop() #getting most popular aritcles regardless of catgories from the top of the set
+            elem = general_article_set.pop(i) #getting most popular aritcles regardless of catgories from the top of the set
             top_results.append(elem)  
-            return top_results
+        return top_results
 
     for category in category_list: #if list isnt empty, loop through categories
         temp_list = []
@@ -64,49 +78,48 @@ def getTop5(category_list):
     return top_results
 
 
-@app.route("/", methods=['POST'])
+@app.route("/", methods=['GET'])
 def NewsHeadlines(request):
     print('Starting NewsHeadlines')
 
     # Get data from url
     categories = request.args.get('categories', default = '')
     cat_list = categories.split()
+
     
     top_results = getTop5(cat_list)
  
     # empty list which will 
     # contain all trending news
-    results = []
+    filtered_results = []
     
     article_num = 0
     #iterate through top articles
-    for ar in top_results:
-        isUnique = True
-        for i in range(len(results)):
-            if(fuzz.ratio(ar, results[i]) > 40):  #don't append article if too similar to any articles already found
-                    isUnique = False
+    while(len(filtered_results) < 5):
+        for ar in top_results:
+            isUnique = True
+            for i in range(len(filtered_results)):
+                #check if article is unique
+                if(fuzz.ratio(ar["title"], filtered_results[i]["title"]) > 40):  
+                        isUnique = False
+                        break
+
+            #If article is not unique replace it
+            if(not isUnique):
+                top_results.pop(article_num)
+                top_results = listFill(cat_list, top_results)
+            #If article is unique add it to the list
+            else:
+                filtered_results.append(ar)
+                if(len(filtered_results) == 5):
                     break
+                article_num = article_num + 1 
 
-        if(not isUnique):
-            top_results.pop(article_num)
-            top_results = listFill(cat_list, top_results)
-        
-        results.append(ar)
-
-        article_num = article_num + 1     
     
-    
-    Results_Dict = {}
-    for ar in top_results:
-        name = ar["name"]
-        url = ar["url"]
-        ar[str(name)] = url
-    
-    print(Results_Dict)
 
-    print('Ending NewsHeadlines')
+    Results_JSON = json.dumps(filtered_results)
 
-    return top_results  
+    return Results_JSON
 
 
 

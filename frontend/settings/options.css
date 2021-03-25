@@ -1,0 +1,37 @@
+/* Styles for settings*/
+
+#settingsTitle{
+    font-family: 'Newsreader', serif;
+    text-align: center;
+    font-size: 100px;
+    font-weight: 400;
+    margin: 0;
+    color: #ffffff;
+}
+body{
+    background-color: #1C2541;
+
+}
+
+.flex-container{
+    color: #ffffff;
+    padding-bottom: 10px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: row;
+}
+div.flex-item{
+    padding: 10px 17% 10px 17% ;
+    text-align: center;
+    border-radius: 10px 10px 10px 10px;
+    color: #ffffff;
+    transition: background-color 0.4s ease-in-out;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 20px;
+    animation: fadeIn 1s forwards;
+}
+
+#like{
+    color: #ffffff;
+    font-size: 30px;
+}
