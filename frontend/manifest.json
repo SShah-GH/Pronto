@@ -1,7 +1,13 @@
+
+
 {
+    
     "manifest_version": 3,
     "name": "Newz Temp",
     "version": "1.0.0",
+    "host permissions": [
+        "https://*/"
+    ],
     "icons":{
         "128" : "icon128.png"
     },
@@ -14,10 +20,14 @@
         "default_popup": "popup.html"
     },
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "background.js",
+        "scripts": ["background.js"],
+        "persistent": false
     },
     "options_page": "settings/options.html",
     "permissions": [
-        "storage"
+        "storage",
+        "https://*/"
     ]
 }
+
