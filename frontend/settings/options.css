@@ -7,9 +7,12 @@
     font-weight: 400;
     margin: 0;
     color: #ffffff;
+    background-color: #0B132B;
+    position: relative;
 }
 body{
     background-color: #1C2541;
+    margin: 0;
 
 }
 

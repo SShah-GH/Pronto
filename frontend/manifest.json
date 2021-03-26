@@ -26,7 +26,8 @@
     "options_page": "settings/options.html",
     "permissions": [
         "storage",
-        "https://*/"
+        "https://*/",
+        "tabs"
     ]
 }
 
