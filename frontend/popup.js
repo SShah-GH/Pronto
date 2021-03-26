@@ -166,23 +166,31 @@ document.querySelector("#HL5").addEventListener("click", function() {
     isFiveOpen = false;
   }
 });
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
+
+///////////////////////// Server Integration ////////////////////////////////////////////////////////////
 document.addEventListener("DOMContentLoaded", function() {
   const http = new XMLHttpRequest();
-  const url = 'https://us-central1-python-test-308204.cloudfunctions.net/getNewsStories';
+  const url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews';
   http.open("GET", url, true);
+  console.log("Before readystate function");
   http.onreadystatechange = function() {
-      if (this.readyState == XMLHttpRequest.DONE) {
-          var json = JSON.parse(http.responseText);
-          document.getElementById("HL1").innerHTML = json[0].title;
-          console.log(json[0].title);
-          document.getElementById("HL2").innerHTML = json[1].title;
-          document.getElementById("HL3").innerHTML = json[2].title;
-          document.getElementById("HL4").innerHTML = json[3].title;
-          document.getElementById("HL5").innerHTML = json[4].title;
-      }
+    console.log("After rst function");
+    if (this.readyState == 4) {
+      console.log("Inside of if statement");
+      var json = JSON.parse(http.responseText);
+      console.log(json);
+      console.log(json.Articles[0].title)
+      document.getElementById("HL1").innerHTML = json.Articles[0].title;
+      document.getElementById("HL2").innerHTML = json.Articles[1].title;
+      document.getElementById("HL3").innerHTML = json.Articles[2].title;
+      document.getElementById("HL4").innerHTML = json.Articles[3].title;
+      document.getElementById("HL5").innerHTML = json.Articles[4].title;
+    }
   };
   http.send(); // Add settings like ("categories=technology-health")
 });
+///////////////////////////////////////////////////////////////////////////////////////////////////

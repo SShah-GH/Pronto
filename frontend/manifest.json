@@ -6,7 +6,9 @@
     "name": "Newz Temp",
     "version": "1.0.0",
     "host permissions": [
-        "https://*/"
+        "https://*/",
+        "https://us-central1-python-test-308204.cloudfunctions.net/",
+        "http://us-central1-python-test-308204.cloudfunctions.net/"
     ],
     "icons":{
         "128" : "images/ProntoIcon128.png"
@@ -21,7 +23,7 @@
         "default_popup": "popup.html"
     },
     "background": {
-        "service_worker": "popup.js"
+        "service_worker": "background.js"
     },
     "options_page": "settings/options.html",
     "permissions": [
