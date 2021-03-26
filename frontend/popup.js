@@ -171,16 +171,14 @@ document.querySelector("#Display5").addEventListener("click", function() {
     isFiveOpen = false;
   }
 });
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+//Get current tab
 
 
 ///////////////////////// Server Integration ////////////////////////////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", function() {
   const http = new XMLHttpRequest();
-  const url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews';
+  const url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews?categories=//tochange'; //change //tochange to the categories based on what we saved--probably in another function
   http.open("GET", url, true);
   http.onreadystatechange = function() {
     if (this.readyState == 4) {
