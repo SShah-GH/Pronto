@@ -1,4 +1,6 @@
+import flask
 from flask import Flask, render_template
+from flask_cors import CORS
 from fuzzywuzzy import fuzz 
 from fuzzywuzzy import process 
 import random
@@ -9,6 +11,7 @@ import json
 import requests
 
 app = Flask(__name__)
+CORS(app)
 
 def RetreiveNews(cat):
     # BBC news api
@@ -117,9 +120,12 @@ def NewsHeadlines(request):
 
     
 
-    Results_JSON = json.dumps(filtered_results)
+    #result = json.dumps(filtered_results[0])
+    result = flask.jsonify({'Articles' : filtered_results})
+    result.headers.add('Access-Control-Allow-Origin', '*')
 
-    return Results_JSON
+
+    return result
 
 
 
