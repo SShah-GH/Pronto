@@ -1,37 +1,37 @@
 /* Styles for settings*/
 
 #settingsTitle{
-    font-family: 'Newsreader', serif;
-    text-align: center;
-    font-size: 100px;
-    font-weight: 400;
-    margin: 0;
-    color: #ffffff;
-    background-color: #0B132B;
-    position: relative;
+  font-family: 'Newsreader', serif;
+  text-align: center;
+  font-size: 100px;
+  font-weight: 400;
+  margin: 0;
+  color: #ffffff;
+  background-color: #0B132B;
+  padding: 10px;
 }
 body{
-    background-color: #1C2541;
-    margin: 0;
-
+  background-color: #3a506b;
+  margin: 0;
+  padding: 0;
 }
 
 .flex-container{
-    color: #ffffff;
-    padding-bottom: 10px;
-    font-size: 16px;
-    display: flex;
-    flex-direction: row;
+  color: #ffffff;
+  padding-bottom: 10px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
 }
 div.flex-item{
-    padding: 10px 17% 10px 17% ;
-    text-align: center;
-    border-radius: 10px 10px 10px 10px;
-    color: #ffffff;
-    transition: background-color 0.4s ease-in-out;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: 20px;
-    animation: fadeIn 1s forwards;
+  padding: 10px 17% 10px 17% ;
+  text-align: center;
+  border-radius: 10px 10px 10px 10px;
+  color: #ffffff;
+  transition: background-color 0.4s ease-in-out;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 20px;
+  animation: fadeIn 1s forwards;
 }
 
 #like{
@@ -139,13 +139,20 @@ div.flex-item{
   }
 
   #catSel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'Source Sans Pro', sans-serif;
     text-align: center;
     font-size: 70px;
     font-weight: 400;
-    margin: 0;
+    margin-bottom: 15px;
     color: #ffffff;
+    background-color: #1C2541;
+    padding-bottom: 13px;
+    border-bottom: 10px;
   }
+
   .all{
     color: #ffffff;
   }

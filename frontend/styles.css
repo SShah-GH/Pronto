@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+    font-size: 30px;
     margin: 0;
     min-height: 180px;
     padding: 0;
@@ -21,10 +21,6 @@ body {
     margin: 0;
     color: #ffffff;
  }
- span{
-     font-size: 30px;
-     color: #FBFEF9;
-    }
 
 .topbar{
     display: flex;
@@ -38,6 +34,8 @@ body {
     flex-grow: 1;
 }
 .topbar span{
+    font-size: 30px;
+    color: #FBFEF9;
     position: absolute;
     right: 0;
     margin-right: 20px;
@@ -74,13 +72,17 @@ div.flex-item{
     background-color: #3a506b00;
     transition: background-color 0.4s ease-in-out;
     font-family: 'Source Sans Pro', sans-serif;
-    font-size: 20px;
+    font-size: 24px;
+    margin-bottom: 15px;
     opacity: 0;
     
 }
 div.flex-item:hover{
     background-color: #3A506B;
 }
+
+
+/* Bot Bar */
 .botbar{
     display: flex;
     flex-direction: row;
@@ -104,27 +106,39 @@ a.botflex:visited{
     text-decoration: underline;
     color: #ffffff;
 }
-#HL1{
+
+
+/* HEADLINES */
+#Display1{
     animation: fadeIn 2.0s forwards;
+    
 }
 
-#HL2{
+.fa-arrow-circle-right{
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    
+}
+.fa-arrow-circle-right:hover{
+    opacity: 0.4;
+}
+#Display2{
     animation: fadeIn 2.0s forwards;
     animation-delay: 0.1875s;
 }
 
-#HL3{
+#Display3{
     animation: fadeIn 2.0s forwards;
     animation-delay: 0.375s;
 }
 
-#HL4{
+#Display4{
     animation: fadeIn 2.0s forwards;
     animation-delay: 0.5625s;
 
 }
 
-#HL5{
+#Display5{
     animation: fadeIn 1.8s forwards;
     animation-delay: 0.75s;
 }

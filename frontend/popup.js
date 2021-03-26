@@ -1,7 +1,7 @@
 /*
 
 Javascript for the extension main popup, Version 1.0.0
-Developed by Preston Rooker and Spencer Stice
+Developed by Preston Rooker and Spencer Stice (and a little bit by Jacob Sandler)
 
 */
 
@@ -168,20 +168,70 @@ document.querySelector("#HL5").addEventListener("click", function() {
 });
 //Get current tab
 
+
+///////////////////////// Server Integration ////////////////////////////////////////////////////////////
+
 document.addEventListener("DOMContentLoaded", function() {
   const http = new XMLHttpRequest();
-  const url = 'https://us-central1-python-test-308204.cloudfunctions.net/getNewsStories';
+  const url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews';
   http.open("GET", url, true);
   http.onreadystatechange = function() {
-      if (this.readyState == 4) {
-          var json = JSON.parse(http.responseText);
-          document.getElementById("HL1").innerHTML = json[0].title;
-          console.log(json[0].title);
-          document.getElementById("HL2").innerHTML = json[1].title;
-          document.getElementById("HL3").innerHTML = json[2].title;
-          document.getElementById("HL4").innerHTML = json[3].title;
-          document.getElementById("HL5").innerHTML = json[4].title;
-      }
+    if (this.readyState == 4) {
+      var json = JSON.parse(http.responseText); 
+      window.json1 = json;
+      console.log(json); //remove this later, its only here for debugging purposes
+      document.getElementById("HL1").innerHTML = json.Articles[0].title;
+      document.getElementById("HL2").innerHTML = json.Articles[1].title;
+      document.getElementById("HL3").innerHTML = json.Articles[2].title;
+      document.getElementById("HL4").innerHTML = json.Articles[3].title;
+      document.getElementById("HL5").innerHTML = json.Articles[4].title;
+    }
   };
   http.send(); // Add settings like ("categories=technology-health")
 });
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+////////////////////// URL Linking ///////////////////////////////////////////////////////////////
+
+document.querySelector('#URL1').addEventListener("click", function() {
+  //window.open(chrome.runtime.getURL(json.Articles[0].url));
+  window.open(window.json1.Articles[0].url,'_blank');
+  console.log(window.json1);
+  console.log(window.json1.Articles[0].url)
+});
+
+document.querySelector('#URL2').addEventListener("click", function() {
+  //window.open(chrome.runtime.getURL(json.Articles[0].url));
+  window.open(window.json1.Articles[1].url,'_blank');
+  console.log(window.json1);
+  console.log(window.json1.Articles[1].url)
+});
+
+document.querySelector('#URL3').addEventListener("click", function() {
+  //window.open(chrome.runtime.getURL(json.Articles[0].url));
+  window.open(window.json1.Articles[2].url,'_blank');
+  console.log(window.json1);
+  console.log(window.json1.Articles[2].url)
+});
+
+document.querySelector('#URL4').addEventListener("click", function() {
+  //window.open(chrome.runtime.getURL(json.Articles[0].url));
+  window.open(window.json1.Articles[3].url,'_blank');
+  console.log(window.json1);
+  console.log(window.json1.Articles[3].url)
+});
+
+document.querySelector('#URL5').addEventListener("click", function() {
+  //window.open(chrome.runtime.getURL(json.Articles[0].url));
+  window.open(window.json1.Articles[4].url,'_blank');
+  console.log(window.json1);
+  console.log(window.json1.Articles[4].url)
+});
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
