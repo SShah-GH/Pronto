@@ -3,7 +3,7 @@
 {
     
     "manifest_version": 3,
-    "name": "Newz Temp",
+    "name": "Pronto",
     "version": "1.0.0",
     "host permissions": [
         "https://*/",

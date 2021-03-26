@@ -56,12 +56,12 @@ body {
 }
 
 /* Content */
-.flex-container{
+#flex-container{
     color: #ffffff;
     padding-bottom: 10px;
     font-size: 16px;
     margin: 10px;
-    display: flex;
+    display: none;
     flex-direction: column;
     cursor: pointer;
 }
@@ -117,7 +117,7 @@ a.botflex:visited{
 .fa-arrow-circle-right{
     opacity: 1;
     transition: opacity 0.2s ease-in-out;
-    
+    font-size: 20px;
 }
 .fa-arrow-circle-right:hover{
     opacity: 0.4;
@@ -142,7 +142,13 @@ a.botflex:visited{
     animation: fadeIn 1.8s forwards;
     animation-delay: 0.75s;
 }
-
+#loading{
+    display: block;
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    margin: 50px;
+}
 
 @keyframes fadeIn {
     from {opacity: 0}

@@ -19,6 +19,11 @@ var headlineTwo = "HL2";
 var headlineThree = "HL3";
 var headlineFour = "HL4";
 var headlineFive = "HL5";
+var displayOne = "Display1";
+var displayTwo = "Display2";
+var displayThree = "Display3";
+var displayFour = "Display4";
+var displayFive = "Display5";
 var id = null;
 
 
@@ -104,65 +109,65 @@ function expandUp(elemId){
 }
 
   //Controls the actions of the buttons when pressed
-document.querySelector("#HL1").addEventListener("click", function() {
+document.querySelector("#Display1").addEventListener("click", function() {
   if(!isOneOpen){
-  document.getElementById(headlineOne).style.backgroundColor = "#3A506B";
-  expandDown(headlineOne);
+  document.getElementById(displayOne).style.backgroundColor = "#3A506B";
+  expandDown(displayOne);
   isOneOpen = true;
   }
   else{
-    expandUp(headlineOne);
-    document.getElementById(headlineOne).style.backgroundColor = "";
+    expandUp(displayOne);
+    document.getElementById(displayOne).style.backgroundColor = "";
     isOneOpen = false;
   }
 });
 
-document.querySelector("#HL2").addEventListener("click", function() {
+document.querySelector("#Display2").addEventListener("click", function() {
   if(!isTwoOpen){
-  document.getElementById(headlineTwo).style.backgroundColor = "#3A506B";
-  expandDown(headlineTwo);
+  document.getElementById(displayTwo).style.backgroundColor = "#3A506B";
+  expandDown(displayTwo);
   isTwoOpen = true;
 
   }
   else{
-    expandUp(headlineTwo);
-    document.getElementById(headlineTwo).style.backgroundColor = "";
+    expandUp(displayTwo);
+    document.getElementById(displayTwo).style.backgroundColor = "";
     isTwoOpen = false;
   }
 });
-document.querySelector("#HL3").addEventListener("click", function() {
+document.querySelector("#Display3").addEventListener("click", function() {
   if(!isThreeOpen){
-  document.getElementById(headlineThree).style.backgroundColor = "#3A506B";
-  expandDown(headlineThree);
+  document.getElementById(displayThree).style.backgroundColor = "#3A506B";
+  expandDown(displayThree);
   isThreeOpen = true;
   }
   else{
-    expandUp(headlineThree);
-    document.getElementById(headlineThree).style.backgroundColor = "";
+    expandUp(displayThree);
+    document.getElementById(displayThree).style.backgroundColor = "";
     isThreeOpen = false;
   }
 });
-document.querySelector("#HL4").addEventListener("click", function() {
+document.querySelector("#Display4").addEventListener("click", function() {
   if(!isFourOpen){
-  document.getElementById(headlineFour).style.backgroundColor = "#3A506B";
-  expandDown(headlineFour);
+  document.getElementById(displayFour).style.backgroundColor = "#3A506B";
+  expandDown(displayFour);
   isFourOpen = true;
   }
   else{
-    expandUp(headlineFour);
-    document.getElementById(headlineFour).style.backgroundColor = "";
+    expandUp(displayFour);
+    document.getElementById(displayFour).style.backgroundColor = "";
     isFourOpen = false;
   }
 });
-document.querySelector("#HL5").addEventListener("click", function() {
+document.querySelector("#Display5").addEventListener("click", function() {
   if(!isFiveOpen){
-  document.getElementById(headlineFive).style.backgroundColor = "#3A506B";
-  expandDown(headlineFive);
+  document.getElementById(displayFive).style.backgroundColor = "#3A506B";
+  expandDown(displayFive);
   isFiveOpen = true;
   }
   else{
-    expandUp(headlineFive);
-    document.getElementById(headlineFive).style.backgroundColor = "";
+    expandUp(displayFive);
+    document.getElementById(displayFive).style.backgroundColor = "";
     isFiveOpen = false;
   }
 });
@@ -187,6 +192,8 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("HL3").innerHTML = json.Articles[2].title;
       document.getElementById("HL4").innerHTML = json.Articles[3].title;
       document.getElementById("HL5").innerHTML = json.Articles[4].title;
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("flex-container").style.display = "flex";
     }
   };
   http.send(); // Add settings like ("categories=technology-health")

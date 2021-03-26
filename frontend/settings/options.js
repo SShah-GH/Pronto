@@ -1,35 +1,84 @@
-//THIS IS THE SAMPLE GIVEN BY CHROME DEV DOCS
+// //THIS IS THE SAMPLE GIVEN BY CHROME DEV DOCS
 
 
-// Saves options to chrome.storage
-function save_options() {
-    var color = document.getElementById('color').value;
-    var likesColor = document.getElementById('like').checked;
-    chrome.storage.sync.set({
-      favoriteColor: color,
-      likesColor: likesColor
-    }, function() {
-      // Update status to let user know options were saved.
-      var status = document.getElementById('status');
-      status.textContent = 'Options saved.';
-      setTimeout(function() {
-        status.textContent = '';
-      }, 750);
-    });
-  }
+// // Saves options to chrome.storage
+// function save_options() {
+//     var color = document.getElementById('color').value;
+//     var likesColor = document.getElementById('like').checked;
+//     chrome.storage.sync.set({
+//       favoriteColor: color,
+//       likesColor: likesColor
+//     }, function() {
+//       // Update status to let user know options were saved.
+//       var status = document.getElementById('status');
+//       status.textContent = 'Options saved.';
+//       setTimeout(function() {
+//         status.textContent = '';
+//       }, 750);
+//     });
+//   }
   
-  // Restores select box and checkbox state using the preferences
-  // stored in chrome.storage.
-  function restore_options() {
-    // Use default value color = 'red' and likesColor = true.
-    chrome.storage.sync.get({
-      favoriteColor: 'red',
-      likesColor: true
-    }, function(items) {
-      document.getElementById('color').value = items.favoriteColor;
-      document.getElementById('like').checked = items.likesColor;
-    });
-  }
-  document.addEventListener('DOMContentLoaded', restore_options);
-  document.getElementById('save').addEventListener('click',
-      save_options);
+//   // Restores select box and checkbox state using the preferences
+//   // stored in chrome.storage.
+//   function restore_options() {
+//     // Use default value color = 'red' and likesColor = true.
+//     chrome.storage.sync.get({
+//       favoriteColor: 'red',
+//       likesColor: true
+//     }, function(items) {
+//       document.getElementById('color').value = items.favoriteColor;
+//       document.getElementById('like').checked = items.likesColor;
+//     });
+//   }
+//   document.addEventListener('DOMContentLoaded', restore_options);
+//   document.querySelector('#save').addEventListener('click',
+//       save_options);
+
+
+function save_options() {
+  var business = document.getElementById('biz').checked;
+  var entertainment = document.getElementById('ent').checked;
+  var health = document.getElementById('health').checked;
+  var science = document.getElementById('sci').checked;
+  var sports = document.getElementById('sports').checked;
+  var technology = document.getElementById('tech').checked;
+  console.log("it ran");
+  chrome.storage.sync.set({
+    business: business,
+    entertainment: entertainment,
+    health: health,
+    science: science,
+    sports: sports,
+    technology: technology
+  }, function() {
+    // Update status to let user know options were saved.
+    var status = document.getElementById('status');
+    status.textContent = 'Options saved.';
+    setTimeout(function() {
+      status.textContent = '';
+    }, 750);
+  });
+}
+
+// Restores select box and checkbox state using the preferences
+// stored in chrome.storage.
+function restore_options() {
+  // Use default value color = 'red' and likesColor = true.
+  chrome.storage.sync.get({
+    business: true,
+    entertainment: true,
+    health: true,
+    science: true,
+    sports: true,
+    technology: true
+  }, function(items) {
+    document.getElementById('biz').checked = items.business;
+    document.getElementById('ent').checked = items.entertainment;
+    document.getElementById('health').checked = items.health;
+    document.getElementById('sci').checked = items.science;
+    document.getElementById('sports').checked = items.sports;
+    document.getElementById('tech').checked = items.technology;
+  });
+}
+document.addEventListener('DOMContentLoaded', restore_options);
+document.querySelector('#save').addEventListener('click', save_options);
