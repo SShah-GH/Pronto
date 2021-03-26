@@ -12,6 +12,7 @@
 <body>
 
 <div id = "settingsTitle">PRONTO SETTINGS</div>
+<div id = "catSel">Category Selection</div>
 <!--
 <div id = "categoryPicker">Favorite color:</div>
 <select id="color">
@@ -21,26 +22,43 @@
  <option value="yellow">yellow</option>
 </select>-->
 
-<label class = "categoryOptions">
-  <input type="checkbox" id="like"><p id="like">All</p>
-  <input type="checkbox" id="like">
-  Business
-  <input type="checkbox" id="hate">
-  Entertainment
-  <input type="checkbox" id="hate">
-  Health
-  <input type="checkbox" id="like">
-  Science
-  <input type="checkbox" id="like">
-  Sports
-  <input type="checkbox" id="like">
-  Technology
+<script src="options.js"></script>
+<label class="container"><div class = "all">All</div>
+  <input type="checkbox" checked="checked">
+  <span class="checkmark"></span>
 </label>
 
+<label class="container"><div class="all">Business</div>
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container"><div class="all">Entertainment</div>
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container"><div class="all">Health</div>
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container"><div class="all">Science</div>
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container"><div class="all">Sports</div>
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container"><div class="all">Technology</div>
+  <input type="checkbox">
+  <span class="checkmark"></span>
+</label>
 <div id="status"></div>
 <button id="save">Save</button>
-
-<script src="options.js"></script>
 </body>
 </html>
 
