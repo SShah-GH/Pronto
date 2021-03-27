@@ -58,7 +58,6 @@ body {
     align-items: center;
 }
 img{
-    
     width: 26px;
     height: 26px;
 }
@@ -158,7 +157,86 @@ a.botflex:visited{
     margin: 50px;
 }
 
+#loading1{
+    display: none;
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    margin: 50px;
+}
+#loading2{
+    display: none;
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    margin: 50px;
+}
+#loading3{
+    display: none;
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    margin: 50px;
+}
+#loading4{
+    display: none;
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    margin: 50px;
+}
+#loading5{
+    display: none;
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    margin: 50px;
+}
+
 @keyframes fadeIn {
     from {opacity: 0}
     to {opacity: 1}
   }
+
+
+
+
+
+  /* New For Click For More*/
+
+.boxy{
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: #0B132B40;
+    margin-bottom: 2px;
+}
+
+.more{
+    display: none;
+}
+
+.flexible{
+    display: flex;
+    flex-direction: column;
+    width: 140px;
+}
+
+.sum{
+    font-size: 16px;
+}
+.readTime{
+    border-style: solid;
+    border-width: 2px;
+    border-color: #0B132B80;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+.sent{
+    border-style: solid;
+    border-width: 2px;
+    border-color: #0B132B80;
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+}

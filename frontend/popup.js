@@ -26,6 +26,7 @@ var displayFour = "Display4";
 var displayFive = "Display5";
 var id = null;
 var catString;
+var isLoaded = false;
 
 //////////////////////////  Settings ////////////////////////////////
 
@@ -40,101 +41,125 @@ document.querySelector('#go-to-options').addEventListener("click", function() {
 ///////////////////  Animations /////////////////////////////////////////////
 
 
-function expandDown(elemId){
-  var elem = document.getElementById(elemId);
-  var pad = 5;
-  clearInterval(id);
-  id = setInterval(frame,5);
-  function frame(){
-    if(pad==50){
-      clearInterval(id);
-    }
-    else{
-      pad = pad + 1;
-      elem.style.paddingBottom = pad + "px";
-    }
-  }
-}
-function expandUp(elemId){
-  var elem = document.getElementById(elemId);
-  var pad = 50;
-  clearInterval(id);
-  id = setInterval(frame,3);
-  function frame(){
-    if(pad==5){
-      clearInterval(id);
-    }
-    else{
-      pad = pad - 1;
-      elem.style.paddingBottom = pad + "px";
-    }
-  }
-}
+// function expandDown(elemId){
+//   var elem = document.getElementById(elemId);
+//   var pad = 5;
+//   clearInterval(id);
+//   id = setInterval(frame,5);
+//   function frame(){
+//     if(pad==50){
+//       clearInterval(id);
+//     }
+//     else{
+//       pad = pad + 1;
+//       elem.style.paddingBottom = pad + "px";
+//     }
+//   }
+// }
+// function expandUp(elemId){
+//   var elem = document.getElementById(elemId);
+//   var pad = 50;
+//   clearInterval(id);
+//   id = setInterval(frame,3);
+//   function frame(){
+//     if(pad==5){
+//       clearInterval(id);
+//     }
+//     else{
+//       pad = pad - 1;
+//       elem.style.paddingBottom = pad + "px";
+//     }
+//   }
+// }
 
-  //Controls the actions of the buttons when pressed
 document.querySelector("#Display1").addEventListener("click", function() {
   if(!isOneOpen){
-  document.getElementById(displayOne).style.backgroundColor = "#3A506B";
-  expandDown(displayOne);
-  isOneOpen = true;
+    document.getElementById(displayOne).style.backgroundColor = "#3A506B";
+    if(isLoaded){
+      document.getElementById('more1').style.display = "flex";
+    }
+    else{
+      document.getElementById("loading1").style.display = "block";
+    }
+    isOneOpen = true;
   }
   else{
-    expandUp(displayOne);
     document.getElementById(displayOne).style.backgroundColor = "";
+    document.getElementById('more1').style.display = "";
     isOneOpen = false;
   }
 });
 
 document.querySelector("#Display2").addEventListener("click", function() {
-  if(!isTwoOpen){
-  document.getElementById(displayTwo).style.backgroundColor = "#3A506B";
-  expandDown(displayTwo);
-  isTwoOpen = true;
-
+  if(!isTwoOpen){  
+    document.getElementById(displayTwo).style.backgroundColor = "#3A506B";
+    if(isLoaded){
+      document.getElementById('more2').style.display = "flex";
+    }
+    else{
+      document.getElementById("loading2").style.display = "block";
+    }
+    isTwoOpen = true;
   }
   else{
-    expandUp(displayTwo);
     document.getElementById(displayTwo).style.backgroundColor = "";
+    document.getElementById('more2').style.display = "";
     isTwoOpen = false;
   }
 });
+
 document.querySelector("#Display3").addEventListener("click", function() {
   if(!isThreeOpen){
-  document.getElementById(displayThree).style.backgroundColor = "#3A506B";
-  expandDown(displayThree);
-  isThreeOpen = true;
+    document.getElementById(displayThree).style.backgroundColor = "#3A506B";
+    if(isLoaded){
+      document.getElementById('more3').style.display = "flex";
+    }
+    else{
+      document.getElementById("loading3").style.display = "block";
+    }
+    isThreeOpen = true;
   }
   else{
-    expandUp(displayThree);
     document.getElementById(displayThree).style.backgroundColor = "";
+    document.getElementById('more3').style.display = "";
     isThreeOpen = false;
   }
 });
 document.querySelector("#Display4").addEventListener("click", function() {
   if(!isFourOpen){
-  document.getElementById(displayFour).style.backgroundColor = "#3A506B";
-  expandDown(displayFour);
-  isFourOpen = true;
+    document.getElementById(displayFour).style.backgroundColor = "#3A506B";
+    if(isLoaded){
+      document.getElementById('more4').style.display = "flex";
+    }
+    else{
+      document.getElementById("loading4").style.display = "block";
+    }
+    isFourOpen = true;
   }
   else{
-    expandUp(displayFour);
+    document.getElementById('more4').style.display = "";
     document.getElementById(displayFour).style.backgroundColor = "";
     isFourOpen = false;
   }
 });
 document.querySelector("#Display5").addEventListener("click", function() {
   if(!isFiveOpen){
-  document.getElementById(displayFive).style.backgroundColor = "#3A506B";
-  expandDown(displayFive);
-  isFiveOpen = true;
+    document.getElementById(displayFive).style.backgroundColor = "#3A506B";
+    if(isLoaded){
+      document.getElementById('more5').style.display = "flex";
+    }
+    else{
+      document.getElementById("loading5").style.display = "block";
+    }
+    isFiveOpen = true;
   }
   else{
-    expandUp(displayFive);
+    document.getElementById('more5').style.display = "";
     document.getElementById(displayFive).style.backgroundColor = "";
     isFiveOpen = false;
   }
 });
-//Get current tab
+  
 
 
 
@@ -142,7 +167,7 @@ document.querySelector("#Display5").addEventListener("click", function() {
 
 document.addEventListener("DOMContentLoaded", function() {
   const http = new XMLHttpRequest();
-  var url = 'https://us-west2-python-test-308204.cloudfunctions.net/getAll?categories='; //change //tochange to the categories based on what we saved--probably in another function
+  var url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews?categories='; //change //tochange to the categories based on what we saved--probably in another function
   // var url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews'; //change //tochange to the categories based on what we saved--probably in another function
 
   chrome.storage.sync.get(['business','entertainment','health','science','sports','technology'],
@@ -169,14 +194,15 @@ document.addEventListener("DOMContentLoaded", function() {
   var len = String.length;
   var finalString = String.slice(0,len-1);
   url = url + finalString;
-  if(!items.business&&!items.business&&!items.business&&!items.business&&!items.business&&!items.business){
-    url = 'https://us-west2-python-test-308204.cloudfunctions.net/getAll';
+  if(!items.business && !items.entertainment && !items.health && !items.science && !items.sports && !items.technology){
+    url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews';
   }
   http.open("GET", url, true);
   http.onreadystatechange = function() {
-    if (this.readyState == 4) {
+    if (this.readyState == 4 && this.status == 200) {
       var json = JSON.parse(http.responseText); 
       window.json1 = json;
+      console.log(url);
       console.log(json); //remove this later, its only here for debugging purposes
       document.getElementById("HL1").innerHTML = json.Articles[0].title;
       document.getElementById("HL2").innerHTML = json.Articles[1].title;
@@ -188,6 +214,73 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
   http.send(); // Add settings like ("categories=technology-health")
+
+  //Implementing function in order to get all results in the background
+  const http2 = new XMLHttpRequest();
+  url = 'https://us-west2-python-test-308204.cloudfunctions.net/getAll?categories=';
+  url = url + finalString;
+  if(!items.business && !items.entertainment && !items.health && !items.science && !items.sports && !items.technology){
+    url = 'https://us-west2-python-test-308204.cloudfunctions.net/getAll';
+  }
+
+  http2.open("GET", url, true);
+  http2.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var json = JSON.parse(http2.responseText); 
+      window.json1 = json;
+      console.log(url);
+      console.log(json); //remove this later, its only here for debugging purposes
+
+      //Summary Display
+      document.getElementById("sum1").innerHTML = json.Articles[0].summary;
+      document.getElementById("sum2").innerHTML = json.Articles[1].summary;
+      document.getElementById("sum3").innerHTML = json.Articles[2].summary;
+      document.getElementById("sum4").innerHTML = json.Articles[3].summary;
+      document.getElementById("sum5").innerHTML = json.Articles[4].summary;
+
+      //Sentiment Display
+      document.getElementById("sent1").innerHTML = json.Articles[0].sentiment;
+      document.getElementById("sent2").innerHTML = json.Articles[1].sentiment;
+      document.getElementById("sent3").innerHTML = json.Articles[2].sentiment;
+      document.getElementById("sent4").innerHTML = json.Articles[3].sentiment;
+      document.getElementById("sent5").innerHTML = json.Articles[4].sentiment;
+      
+
+      //Reading Length Display
+      document.getElementById("readTime1").innerHTML = json.Articles[0].read_time;
+      document.getElementById("readTime2").innerHTML = json.Articles[1].read_time;
+      document.getElementById("readTime3").innerHTML = json.Articles[2].read_time;
+      document.getElementById("readTime4").innerHTML = json.Articles[3].read_time;
+      document.getElementById("readTime5").innerHTML = json.Articles[4].read_time;
+
+      document.getElementById("loading1").style.display = "none";
+      document.getElementById("loading2").style.display = "none";
+      document.getElementById("loading3").style.display = "none";
+      document.getElementById("loading4").style.display = "none";
+      document.getElementById("loading5").style.display = "none";
+
+      isLoaded = true;
+      if(isOneOpen){
+        document.getElementById('more1').style.display = "flex";
+      }
+      if(isTwoOpen){
+        document.getElementById('more2').style.display = "flex";
+      }
+      if(isThreeOpen){
+        document.getElementById('more3').style.display = "flex";
+      }
+      if(isFourOpen){
+        document.getElementById('more4').style.display = "flex";
+      }
+      if(isFiveOpen){
+        document.getElementById('more5').style.display = "flex";
+      }
+    }
+
+  }
+  
+  http2.send();
+  console.log('ending background call');
 });
 });
 

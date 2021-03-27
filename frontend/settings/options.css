@@ -154,6 +154,37 @@ div.flex-item{
     border-bottom: 10px;
   }
 
+  #status{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+  }
+
+  #save {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    color: rgb(255, 255, 255); 
+    font-size: 30px; 
+    line-height: 30px; 
+    padding: 6px; 
+    border-radius: 10px; 
+    font-family: Georgia, serif; 
+    font-weight: normal; 
+    text-decoration: none; 
+    font-style: normal; 
+    font-variant: normal; 
+    text-transform: none;
+    background-color: #1C2541; 
+    /* background-image: linear-gradient(to right, rgb(58, 80, 107) 0%, rgb(28, 37, 65) 37%, rgb(11, 19, 43) 100%);  */
+    box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;  
+    border: 2px solid rgb(28, 110, 164); 
+    display: inline-block;}
+    #save:hover {
+    background: #3A506B; }
+    #save:active {
+    background: #0B132B; }
+
   .all{
     color: #ffffff;
   }
