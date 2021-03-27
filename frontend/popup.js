@@ -86,6 +86,7 @@ document.querySelector("#Display1").addEventListener("click", function() {
   else{
     document.getElementById(displayOne).style.backgroundColor = "";
     document.getElementById('more1').style.display = "";
+    document.getElementById("loading1").style.display = "none";
     isOneOpen = false;
   }
 });
@@ -104,6 +105,7 @@ document.querySelector("#Display2").addEventListener("click", function() {
   else{
     document.getElementById(displayTwo).style.backgroundColor = "";
     document.getElementById('more2').style.display = "";
+    document.getElementById("loading2").style.display = "none";
     isTwoOpen = false;
   }
 });
@@ -122,6 +124,7 @@ document.querySelector("#Display3").addEventListener("click", function() {
   else{
     document.getElementById(displayThree).style.backgroundColor = "";
     document.getElementById('more3').style.display = "";
+    document.getElementById("loading3").style.display = "none";
     isThreeOpen = false;
   }
 });
@@ -139,6 +142,7 @@ document.querySelector("#Display4").addEventListener("click", function() {
   else{
     document.getElementById('more4').style.display = "";
     document.getElementById(displayFour).style.backgroundColor = "";
+    document.getElementById("loading4").style.display = "none";
     isFourOpen = false;
   }
 });
@@ -156,6 +160,7 @@ document.querySelector("#Display5").addEventListener("click", function() {
   else{
     document.getElementById('more5').style.display = "";
     document.getElementById(displayFive).style.backgroundColor = "";
+    document.getElementById("loading5").style.display = "none";
     isFiveOpen = false;
   }
 });
