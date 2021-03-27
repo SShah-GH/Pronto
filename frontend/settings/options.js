@@ -1,4 +1,4 @@
-//THIS IS THE SAMPLE GIVEN BY CHROME DEV DOCS
+// //THIS IS THE SAMPLE GIVEN BY CHROME DEV DOCS
 
 
 // Saves options to chrome.storage
@@ -30,7 +30,6 @@ function save_options() {
   // Restores select box and checkbox state using the preferences
   // stored in chrome.storage.
   function restore_options() {
-    // Use default value color = 'red' and likesColor = true.
     chrome.storage.sync.get({
       business: true,
       entertainment: true,
