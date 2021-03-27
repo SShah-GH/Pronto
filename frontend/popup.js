@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var len = String.length;
   var finalString = String.slice(0,len-1);
   url = url + finalString;
-  if(!items.business&&!items.business&&!items.business&&!items.business&&!items.business&&!items.business){
+  if(!items.business && !items.entertainment && !items.health && !items.science && !items.sports && !items.technology){
     url = 'https://us-west2-python-test-308204.cloudfunctions.net/getAll';
   }
   http.open("GET", url, true);
@@ -177,6 +177,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (this.readyState == 4) {
       var json = JSON.parse(http.responseText); 
       window.json1 = json;
+      console.log(url);
       console.log(json); //remove this later, its only here for debugging purposes
       document.getElementById("HL1").innerHTML = json.Articles[0].title;
       document.getElementById("HL2").innerHTML = json.Articles[1].title;
