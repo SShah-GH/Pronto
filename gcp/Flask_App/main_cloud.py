@@ -20,7 +20,7 @@ def RetreiveNews(cat):
 
     apiKeysList = ["d7fa03ba28f94eba97ffb5276cca060a", "716c0526d1fc42008fdfd127fc0d6f9e", "a9e142b8b32a460497c02018511fbb65", "3670b6fd717a4ad0a49ba042649edef7", "196537e4a5814693b334cac3e4723a38", "39810cc78e384d3a9c416070fdeddc64"]
     apiKey = random.choice(apiKeysList)
-    print(apiKey)
+    #print(apiKey)
 
     query_params = {
       "sortBy": "top",
@@ -86,12 +86,14 @@ def getTop5(category_list):
     return top_results
 
 
-def NewsHeadlines():
+@app.route("/", methods=['GET'])
+def NewsHeadlines(request):
     print('Starting NewsHeadlines')
 
     # Get data from url
-    
-    cat_list = ['technology', 'sports', 'business']
+    categories = request.args.get('categories', default = '')
+    cat_list = categories.split('-')
+    print(cat_list)
 
     
     top_results = getTop5(cat_list)
@@ -124,16 +126,10 @@ def NewsHeadlines():
 
     
 
-    result = json.dumps(filtered_results)
-    #result = flask.jsonify({'Articles' : filtered_results})
-    #result.headers.add('Access-Control-Allow-Origin', '*')
+    #result = json.dumps(filtered_results[0])
+    result = flask.jsonify({'Articles' : filtered_results})
+    result.headers.add('Access-Control-Allow-Origin', '*')
+
+
 
     return result
-
-
-def main():
-    result = NewsHeadlines()
-    print(result)
-
-if __name__ == "__main__":
-    main()
