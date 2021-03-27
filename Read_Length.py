@@ -19,7 +19,7 @@ def getLength(content):
 
     minutes = int(round(time, 1))
 
-    return minutes
+    return str(minutes)
 
 def main():
 
@@ -28,7 +28,7 @@ def main():
     content = getContent(url)
     time = getLength(content)
 
-    return time
+    print(time)
 
 
 if __name__ == "__main__":
