@@ -25,7 +25,7 @@ def Summarize(content):
 
 
 def main():
-    content = getContent()
+    content = getContent('https://www.cnbc.com/2021/03/24/container-ship-runs-aground-in-suez-canal-causing-traffic-jam.html')
     new_content = Summarize(content)
     print(new_content)
 
