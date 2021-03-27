@@ -58,7 +58,6 @@ body {
     align-items: center;
 }
 img{
-    
     width: 26px;
     height: 26px;
 }
@@ -152,6 +151,42 @@ a.botflex:visited{
 }
 #loading{
     display: block;
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    margin: 50px;
+}
+
+#loading1{
+    display: none;
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    margin: 50px;
+}
+#loading2{
+    display: none;
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    margin: 50px;
+}
+#loading3{
+    display: none;
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    margin: 50px;
+}
+#loading4{
+    display: none;
+    font-size: 80px;
+    text-align: center;
+    color: white;
+    margin: 50px;
+}
+#loading5{
+    display: none;
     font-size: 80px;
     text-align: center;
     color: white;

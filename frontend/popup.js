@@ -26,6 +26,7 @@ var displayFour = "Display4";
 var displayFive = "Display5";
 var id = null;
 var catString;
+var isLoaded = false;
 
 //////////////////////////  Settings ////////////////////////////////
 
@@ -73,9 +74,14 @@ document.querySelector('#go-to-options').addEventListener("click", function() {
 
 document.querySelector("#Display1").addEventListener("click", function() {
   if(!isOneOpen){
-  document.getElementById(displayOne).style.backgroundColor = "#3A506B";
-  document.getElementById('more1').style.display = "flex";
-  isOneOpen = true;
+    document.getElementById(displayOne).style.backgroundColor = "#3A506B";
+    if(isLoaded){
+      document.getElementById('more1').style.display = "flex";
+    }
+    else{
+      document.getElementById("loading1").style.display = "block";
+    }
+    isOneOpen = true;
   }
   else{
     document.getElementById(displayOne).style.backgroundColor = "";
@@ -85,10 +91,15 @@ document.querySelector("#Display1").addEventListener("click", function() {
 });
 
 document.querySelector("#Display2").addEventListener("click", function() {
-  if(!isTwoOpen){
-  document.getElementById(displayTwo).style.backgroundColor = "#3A506B";
-  document.getElementById('more2').style.display = "flex";
-  isTwoOpen = true;
+  if(!isTwoOpen){  
+    document.getElementById(displayTwo).style.backgroundColor = "#3A506B";
+    if(isLoaded){
+      document.getElementById('more2').style.display = "flex";
+    }
+    else{
+      document.getElementById("loading2").style.display = "block";
+    }
+    isTwoOpen = true;
   }
   else{
     document.getElementById(displayTwo).style.backgroundColor = "";
@@ -99,9 +110,14 @@ document.querySelector("#Display2").addEventListener("click", function() {
 
 document.querySelector("#Display3").addEventListener("click", function() {
   if(!isThreeOpen){
-  document.getElementById(displayThree).style.backgroundColor = "#3A506B";
-  document.getElementById('more3').style.display = "flex";
-  isThreeOpen = true;
+    document.getElementById(displayThree).style.backgroundColor = "#3A506B";
+    if(isLoaded){
+      document.getElementById('more3').style.display = "flex";
+    }
+    else{
+      document.getElementById("loading3").style.display = "block";
+    }
+    isThreeOpen = true;
   }
   else{
     document.getElementById(displayThree).style.backgroundColor = "";
@@ -111,9 +127,14 @@ document.querySelector("#Display3").addEventListener("click", function() {
 });
 document.querySelector("#Display4").addEventListener("click", function() {
   if(!isFourOpen){
-  document.getElementById(displayFour).style.backgroundColor = "#3A506B";
-  document.getElementById('more4').style.display = "flex";
-  isFourOpen = true;
+    document.getElementById(displayFour).style.backgroundColor = "#3A506B";
+    if(isLoaded){
+      document.getElementById('more4').style.display = "flex";
+    }
+    else{
+      document.getElementById("loading4").style.display = "block";
+    }
+    isFourOpen = true;
   }
   else{
     document.getElementById('more4').style.display = "";
@@ -123,9 +144,14 @@ document.querySelector("#Display4").addEventListener("click", function() {
 });
 document.querySelector("#Display5").addEventListener("click", function() {
   if(!isFiveOpen){
-  document.getElementById(displayFive).style.backgroundColor = "#3A506B";
-  document.getElementById('more5').style.display = "flex";
-  isFiveOpen = true;
+    document.getElementById(displayFive).style.backgroundColor = "#3A506B";
+    if(isLoaded){
+      document.getElementById('more5').style.display = "flex";
+    }
+    else{
+      document.getElementById("loading5").style.display = "block";
+    }
+    isFiveOpen = true;
   }
   else{
     document.getElementById('more5').style.display = "";
@@ -226,6 +252,29 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("readTime3").innerHTML = json.Articles[2].read_time;
       document.getElementById("readTime4").innerHTML = json.Articles[3].read_time;
       document.getElementById("readTime5").innerHTML = json.Articles[4].read_time;
+
+      document.getElementById("loading1").style.display = "none";
+      document.getElementById("loading2").style.display = "none";
+      document.getElementById("loading3").style.display = "none";
+      document.getElementById("loading4").style.display = "none";
+      document.getElementById("loading5").style.display = "none";
+
+      isLoaded = true;
+      if(isOneOpen){
+        document.getElementById('more1').style.display = "flex";
+      }
+      if(isTwoOpen){
+        document.getElementById('more2').style.display = "flex";
+      }
+      if(isThreeOpen){
+        document.getElementById('more3').style.display = "flex";
+      }
+      if(isFourOpen){
+        document.getElementById('more4').style.display = "flex";
+      }
+      if(isFiveOpen){
+        document.getElementById('more5').style.display = "flex";
+      }
     }
 
   }
