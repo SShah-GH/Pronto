@@ -17,22 +17,33 @@ def RetreiveNews(cat):
     # BBC news api
     # following query parameters are used
     # source, sortBy and apiKey
+    call_success = False
 
-    apiKeysList = ["d7fa03ba28f94eba97ffb5276cca060a", "716c0526d1fc42008fdfd127fc0d6f9e", "a9e142b8b32a460497c02018511fbb65", "3670b6fd717a4ad0a49ba042649edef7", "196537e4a5814693b334cac3e4723a38", "39810cc78e384d3a9c416070fdeddc64"]
-    apiKey = random.choice(apiKeysList)
-    print(apiKey)
+    while call_success == False:
+        apiKeysList = ["d7fa03ba28f94eba97ffb5276cca060a", "716c0526d1fc42008fdfd127fc0d6f9e", "a9e142b8b32a460497c02018511fbb65", "3670b6fd717a4ad0a49ba042649edef7", "196537e4a5814693b334cac3e4723a38", "39810cc78e384d3a9c416070fdeddc64"]
+        apiKey = random.choice(apiKeysList)
+        print(apiKey)
 
-    query_params = {
-      "sortBy": "top",
-      "apiKey": apiKey,
-      "category"  : cat
-    }
-    main_url = " https://newsapi.org/v2/top-headlines?country=us&category=" + cat + "&apiKey=" + apiKey
- 
-    # fetching data in json format
-    res = requests.get(main_url, params=query_params)
-    top_articles = res.json()
-    article = top_articles["articles"]
+        
+        query_params = {
+        "sortBy": "top",
+        "apiKey": apiKey,
+        "category"  : cat
+        }
+        main_url = " https://newsapi.org/v2/top-headlines?country=us&category=" + cat + "&apiKey=" + apiKey
+
+        res = requests.get(main_url, params=query_params)
+        top_articles = res.json()
+        # fetching data in json format
+        try:
+          article = top_articles["articles"]  
+        except KeyError as e:
+            call_success = False
+            continue
+        call_success = True
+
+    
+    
 
     results = []
 
@@ -42,17 +53,20 @@ def RetreiveNews(cat):
     return results
 
 
-def listFill(category_list, top_results):
+def listFill(category_list, top_results, used_articles):
 
-    if len(category_list) == 0:
-        rand_cat = 'general'
-    else:
-        rand_cat = random.choice(category_list)
+    cat_num = len(category_list)
+    if cat_num == 0:
+        category_list = ['general']
+        cat_num = 1
 
-    while(len(top_results) < 5): #if list is not full we will pull articles from a random category    
-        for ar in RetreiveNews(rand_cat):
-            if ar not in top_results:
+    cur_cat = 0
+    while(len(top_results) < 5): #if list is not full we will pull articles from a random category
+        cat = category_list[cur_cat%cat_num] 
+        for ar in RetreiveNews(cat):
+            if ar not in top_results and ar not in used_articles:
                 top_results.append(ar)
+                cur_cat = cur_cat + 1
                 break
 
     return top_results
@@ -81,7 +95,8 @@ def getTop5(category_list):
 
 
     #Fill in extra categories if still missing
-    top_results = listFill(category_list, top_results)
+    used_articles = []
+    top_results = listFill(category_list, top_results, used_articles)
 
     return top_results
 
@@ -92,6 +107,7 @@ def NewsHeadlines():
     # Get data from url
     
     cat_list = ['technology', 'sports', 'business']
+    used_articles = []
 
     
     top_results = getTop5(cat_list)
@@ -114,7 +130,7 @@ def NewsHeadlines():
             #If article is not unique replace it
             if(not isUnique):
                 top_results.pop(article_num)
-                top_results = listFill(cat_list, top_results)
+                top_results = listFill(cat_list, top_results, used_articles)
             #If article is unique add it to the list
             else:
                 filtered_results.append(ar)
