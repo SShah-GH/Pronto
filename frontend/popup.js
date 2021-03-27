@@ -25,7 +25,7 @@ var displayThree = "Display3";
 var displayFour = "Display4";
 var displayFive = "Display5";
 var id = null;
-
+var catString;
 
 //////////////////////////  Settings ////////////////////////////////
 
@@ -36,43 +36,6 @@ document.querySelector('#go-to-options').addEventListener("click", function() {
     window.open(chrome.runtime.getURL('options.html'));
   }
 });
-
-function setColor() { //sets color circle based upon settings, just for proof of concept
-  var favColor;
-  var doesLikeColor;
-  chrome.storage.sync.get([
-    'favoriteColor','likesColor'
-  ],
-    function(items){
-    favColor = items.favoriteColor;
-    doesLikeColor = items.likesColor;
-
-    if(doesLikeColor){
-      if(favColor == 'red'){
-        document.getElementById('circle').style.backgroundColor = 'red';
-      }
-      else if(favColor == 'blue'){
-        document.getElementById('circle').style.backgroundColor = 'blue';
-      }
-      else if(favColor == 'green'){
-        document.getElementById('circle').style.backgroundColor = 'green';
-      }
-      else if(favColor == 'yellow'){
-        document.getElementById('circle').style.backgroundColor = 'yellow';
-      }  
-    }
-    else{
-      document.getElementById('circle').style.backgroundColor = 'transparent';
-    }
-    
-  });
-
-  
-}
-
-document.addEventListener('DOMContentLoaded',setColor); 
-
-
 
 ///////////////////  Animations /////////////////////////////////////////////
 
@@ -174,11 +137,41 @@ document.querySelector("#Display5").addEventListener("click", function() {
 //Get current tab
 
 
+
 ///////////////////////// Server Integration ////////////////////////////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", function() {
   const http = new XMLHttpRequest();
-  const url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews'; //change //tochange to the categories based on what we saved--probably in another function
+  var url = 'https://us-west2-python-test-308204.cloudfunctions.net/getAll?categories='; //change //tochange to the categories based on what we saved--probably in another function
+  // var url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews'; //change //tochange to the categories based on what we saved--probably in another function
+
+  chrome.storage.sync.get(['business','entertainment','health','science','sports','technology'],
+  function(items){
+    var String = '';
+  if(items.business){
+    String += 'business-';
+  }
+  if(items.entertainment){
+    String += 'entertainment-';
+  }
+  if(items.health){
+    String += 'health-';
+  }
+  if(items.science){
+    String += 'science-';
+  }
+  if(items.sports){
+    String += 'sports-';
+  }
+  if(items.technology){
+    String += 'technology-';
+  }
+  var len = String.length;
+  var finalString = String.slice(0,len-1);
+  url = url + finalString;
+  if(!items.business&&!items.business&&!items.business&&!items.business&&!items.business&&!items.business){
+    url = 'https://us-west2-python-test-308204.cloudfunctions.net/getAll';
+  }
   http.open("GET", url, true);
   http.onreadystatechange = function() {
     if (this.readyState == 4) {
@@ -195,6 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
   http.send(); // Add settings like ("categories=technology-health")
+});
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
