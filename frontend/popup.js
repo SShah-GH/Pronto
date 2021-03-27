@@ -1,6 +1,6 @@
 /*
 
-Javascript for the extension main popup, Version 1.0.0
+Javascript for the extension main popup, Version 1.0.1
 Developed by Preston Rooker and Spencer Stice (and a little bit by Jacob Sandler)
 
 */
@@ -38,43 +38,17 @@ document.querySelector('#go-to-options').addEventListener("click", function() {
   }
 });
 
-///////////////////  Animations /////////////////////////////////////////////
-
-
-// function expandDown(elemId){
-//   var elem = document.getElementById(elemId);
-//   var pad = 5;
-//   clearInterval(id);
-//   id = setInterval(frame,5);
-//   function frame(){
-//     if(pad==50){
-//       clearInterval(id);
-//     }
-//     else{
-//       pad = pad + 1;
-//       elem.style.paddingBottom = pad + "px";
-//     }
-//   }
-// }
-// function expandUp(elemId){
-//   var elem = document.getElementById(elemId);
-//   var pad = 50;
-//   clearInterval(id);
-//   id = setInterval(frame,3);
-//   function frame(){
-//     if(pad==5){
-//       clearInterval(id);
-//     }
-//     else{
-//       pad = pad - 1;
-//       elem.style.paddingBottom = pad + "px";
-//     }
-//   }
-// }
+///////////////////  More Information Events /////////////////////////////////////////////
 
 document.querySelector("#Display1").addEventListener("click", function() {
   if(!isOneOpen){
     document.getElementById(displayOne).style.backgroundColor = "#3A506B";
+
+    document.getElementById(displayTwo).style.display = "none";
+    document.getElementById(displayThree).style.display = "none";
+    document.getElementById(displayFour).style.display = "none";
+    document.getElementById(displayFive).style.display = "none";
+
     if(isLoaded){
       document.getElementById('more1').style.display = "flex";
     }
@@ -86,6 +60,13 @@ document.querySelector("#Display1").addEventListener("click", function() {
   else{
     document.getElementById(displayOne).style.backgroundColor = "";
     document.getElementById('more1').style.display = "";
+    document.getElementById("loading1").style.display = "none";
+
+    document.getElementById(displayTwo).style.display = "";
+    document.getElementById(displayThree).style.display = "";
+    document.getElementById(displayFour).style.display = "";
+    document.getElementById(displayFive).style.display = "";
+
     isOneOpen = false;
   }
 });
@@ -99,11 +80,24 @@ document.querySelector("#Display2").addEventListener("click", function() {
     else{
       document.getElementById("loading2").style.display = "block";
     }
+
+    document.getElementById(displayOne).style.display = "none";
+    document.getElementById(displayThree).style.display = "none";
+    document.getElementById(displayFour).style.display = "none";
+    document.getElementById(displayFive).style.display = "none";
+
     isTwoOpen = true;
   }
   else{
     document.getElementById(displayTwo).style.backgroundColor = "";
     document.getElementById('more2').style.display = "";
+    document.getElementById("loading2").style.display = "none";
+
+    document.getElementById(displayOne).style.display = "";
+    document.getElementById(displayThree).style.display = "";
+    document.getElementById(displayFour).style.display = "";
+    document.getElementById(displayFive).style.display = "";
+
     isTwoOpen = false;
   }
 });
@@ -117,11 +111,24 @@ document.querySelector("#Display3").addEventListener("click", function() {
     else{
       document.getElementById("loading3").style.display = "block";
     }
+
+    document.getElementById(displayTwo).style.display = "none";
+    document.getElementById(displayOne).style.display = "none";
+    document.getElementById(displayFour).style.display = "none";
+    document.getElementById(displayFive).style.display = "none";
+
     isThreeOpen = true;
   }
   else{
     document.getElementById(displayThree).style.backgroundColor = "";
     document.getElementById('more3').style.display = "";
+    document.getElementById("loading3").style.display = "none";
+
+    document.getElementById(displayTwo).style.display = "";
+    document.getElementById(displayOne).style.display = "";
+    document.getElementById(displayFour).style.display = "";
+    document.getElementById(displayFive).style.display = "";
+
     isThreeOpen = false;
   }
 });
@@ -134,11 +141,24 @@ document.querySelector("#Display4").addEventListener("click", function() {
     else{
       document.getElementById("loading4").style.display = "block";
     }
+
+    document.getElementById(displayTwo).style.display = "none";
+    document.getElementById(displayThree).style.display = "none";
+    document.getElementById(displayOne).style.display = "none";
+    document.getElementById(displayFive).style.display = "none";
+
     isFourOpen = true;
   }
   else{
     document.getElementById('more4').style.display = "";
     document.getElementById(displayFour).style.backgroundColor = "";
+    document.getElementById("loading4").style.display = "none";
+
+    document.getElementById(displayTwo).style.display = "";
+    document.getElementById(displayThree).style.display = "";
+    document.getElementById(displayOne).style.display = "";
+    document.getElementById(displayFive).style.display = "";
+
     isFourOpen = false;
   }
 });
@@ -151,11 +171,24 @@ document.querySelector("#Display5").addEventListener("click", function() {
     else{
       document.getElementById("loading5").style.display = "block";
     }
+
+    document.getElementById(displayTwo).style.display = "none";
+    document.getElementById(displayThree).style.display = "none";
+    document.getElementById(displayFour).style.display = "none";
+    document.getElementById(displayOne).style.display = "none";
+
     isFiveOpen = true;
   }
   else{
     document.getElementById('more5').style.display = "";
     document.getElementById(displayFive).style.backgroundColor = "";
+    document.getElementById("loading5").style.display = "none";
+
+    document.getElementById(displayTwo).style.display = "";
+    document.getElementById(displayThree).style.display = "";
+    document.getElementById(displayFour).style.display = "";
+    document.getElementById(displayOne).style.display = "";
+
     isFiveOpen = false;
   }
 });
