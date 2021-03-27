@@ -86,13 +86,12 @@ def getTop5(category_list):
     return top_results
 
 
-@app.route("/", methods=['GET'])
-def NewsHeadlines(request):
+def NewsHeadlines():
     print('Starting NewsHeadlines')
 
     # Get data from url
-    categories = request.args.get('categories', default = '')
-    cat_list = categories.split()
+    
+    cat_list = ['technology', 'sports', 'business']
 
     
     top_results = getTop5(cat_list)
@@ -125,39 +124,16 @@ def NewsHeadlines(request):
 
     
 
-    #result = json.dumps(filtered_results[0])
-    result = flask.jsonify({'Articles' : filtered_results})
-    result.headers.add('Access-Control-Allow-Origin', '*')
-
+    result = json.dumps(filtered_results)
+    #result = flask.jsonify({'Articles' : filtered_results})
+    #result.headers.add('Access-Control-Allow-Origin', '*')
 
     return result
 
 
+def main():
+    result = NewsHeadlines()
+    print(result)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-       
-
-
-
+if __name__ == "__main__":
+    main()

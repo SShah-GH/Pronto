@@ -142,7 +142,7 @@ document.querySelector("#Display5").addEventListener("click", function() {
 
 document.addEventListener("DOMContentLoaded", function() {
   const http = new XMLHttpRequest();
-  var url = 'https://us-west2-python-test-308204.cloudfunctions.net/getAll?categories='; //change //tochange to the categories based on what we saved--probably in another function
+  var url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews?categories='; //change //tochange to the categories based on what we saved--probably in another function
   // var url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews'; //change //tochange to the categories based on what we saved--probably in another function
 
   chrome.storage.sync.get(['business','entertainment','health','science','sports','technology'],
@@ -170,11 +170,11 @@ document.addEventListener("DOMContentLoaded", function() {
   var finalString = String.slice(0,len-1);
   url = url + finalString;
   if(!items.business && !items.entertainment && !items.health && !items.science && !items.sports && !items.technology){
-    url = 'https://us-west2-python-test-308204.cloudfunctions.net/getAll';
+    url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews';
   }
   http.open("GET", url, true);
   http.onreadystatechange = function() {
-    if (this.readyState == 4) {
+    if (this.readyState == 4 && this.status == 200) {
       var json = JSON.parse(http.responseText); 
       window.json1 = json;
       console.log(url);
@@ -189,6 +189,52 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   };
   http.send(); // Add settings like ("categories=technology-health")
+
+  //Implementing function in order to get all results in the background
+  const http2 = new XMLHttpRequest();
+  url = 'https://us-west2-python-test-308204.cloudfunctions.net/getAll?categories=';
+  url = url + finalString;
+  if(!items.business && !items.entertainment && !items.health && !items.science && !items.sports && !items.technology){
+    url = 'https://us-west2-python-test-308204.cloudfunctions.net/getAll';
+  }
+
+  http2.open("GET", url, true);
+  http2.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var json = JSON.parse(http2.responseText); 
+      window.json1 = json;
+      console.log(url);
+      console.log(json); //remove this later, its only here for debugging purposes
+
+      //Summary Display
+      document.getElementById("HL1").innerHTML = json.Articles[0].summary;
+      document.getElementById("HL2").innerHTML = json.Articles[1].summary;
+      document.getElementById("HL3").innerHTML = json.Articles[2].summary;
+      document.getElementById("HL4").innerHTML = json.Articles[3].summary;
+      document.getElementById("HL5").innerHTML = json.Articles[4].summary;
+
+      //Sentiment Display
+      document.getElementById("HL1").innerHTML = json.Articles[0].sentiment;
+      document.getElementById("HL2").innerHTML = json.Articles[1].sentiment;
+      document.getElementById("HL3").innerHTML = json.Articles[2].sentiment;
+      document.getElementById("HL4").innerHTML = json.Articles[3].sentiment;
+      document.getElementById("HL5").innerHTML = json.Articles[4].sentiment;
+      
+
+      //Reading Length Display
+      document.getElementById("HL1").innerHTML = json.Articles[0].read_time;
+      document.getElementById("HL2").innerHTML = json.Articles[1].read_time;
+      document.getElementById("HL3").innerHTML = json.Articles[2].read_time;
+      document.getElementById("HL4").innerHTML = json.Articles[3].read_time;
+      document.getElementById("HL5").innerHTML = json.Articles[4].read_time;
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("flex-container").style.display = "flex";
+    }
+
+  }
+  
+  http2.send();
+  console.log('ending background call');
 });
 });
 

@@ -1,4 +1,3 @@
-
 import flask
 from flask import Flask, render_template
 from flask_cors import CORS
@@ -24,7 +23,7 @@ def getContent(url):
     # From a URL
     resp = requests.get(url)
     if resp.ok:
-        content = extractor.get_content_from_url(url)
+            content = extractor.get_content_from_url(url)
     else:
         content = 'error'
     
@@ -159,13 +158,10 @@ def getTop5(category_list):
 
 
 
-@app.route("/", methods=['GET'])
-def NewsHeadlines(request):
+def NewsHeadlines():
     print('Starting NewsHeadlines')
 
-    # Get data from url
-    categories = request.args.get('categories', default = '')
-    cat_list = categories.split('-')
+    cat_list = ['business']
     
     top_results = getTop5(cat_list)
  
@@ -222,11 +218,17 @@ def NewsHeadlines(request):
         ar['read_time'] = read_time
 
     print('Appended Data')
-
     #result = json.dumps(filtered_results[0])
-    result = flask.jsonify({'Articles' : filtered_results})
-    result.headers.add('Access-Control-Allow-Origin', '*')
+    result = json.dumps(filtered_results)
+    #result.headers.add('Access-Control-Allow-Origin', '*')
 
     return result
 
 
+def main():
+    result = NewsHeadlines()
+    print(result)
+
+if __name__ == "__main__":
+    main()
+    
