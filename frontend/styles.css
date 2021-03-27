@@ -49,10 +49,18 @@ body {
     position: absolute;
     left: 0;
     margin-left: 10px;
-    width: 15px;
-    height: 15px;
-    background-color: red;
-    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    
+    width: 26px;
+    height: 26px;
 }
 
 /* Content */
