@@ -40,47 +40,46 @@ document.querySelector('#go-to-options').addEventListener("click", function() {
 ///////////////////  Animations /////////////////////////////////////////////
 
 
-function expandDown(elemId){
-  var elem = document.getElementById(elemId);
-  var pad = 5;
-  clearInterval(id);
-  id = setInterval(frame,5);
-  function frame(){
-    if(pad==50){
-      clearInterval(id);
-    }
-    else{
-      pad = pad + 1;
-      elem.style.paddingBottom = pad + "px";
-    }
-  }
-}
-function expandUp(elemId){
-  var elem = document.getElementById(elemId);
-  var pad = 50;
-  clearInterval(id);
-  id = setInterval(frame,3);
-  function frame(){
-    if(pad==5){
-      clearInterval(id);
-    }
-    else{
-      pad = pad - 1;
-      elem.style.paddingBottom = pad + "px";
-    }
-  }
-}
+// function expandDown(elemId){
+//   var elem = document.getElementById(elemId);
+//   var pad = 5;
+//   clearInterval(id);
+//   id = setInterval(frame,5);
+//   function frame(){
+//     if(pad==50){
+//       clearInterval(id);
+//     }
+//     else{
+//       pad = pad + 1;
+//       elem.style.paddingBottom = pad + "px";
+//     }
+//   }
+// }
+// function expandUp(elemId){
+//   var elem = document.getElementById(elemId);
+//   var pad = 50;
+//   clearInterval(id);
+//   id = setInterval(frame,3);
+//   function frame(){
+//     if(pad==5){
+//       clearInterval(id);
+//     }
+//     else{
+//       pad = pad - 1;
+//       elem.style.paddingBottom = pad + "px";
+//     }
+//   }
+// }
 
-  //Controls the actions of the buttons when pressed
 document.querySelector("#Display1").addEventListener("click", function() {
   if(!isOneOpen){
   document.getElementById(displayOne).style.backgroundColor = "#3A506B";
-  expandDown(displayOne);
+  document.getElementById('more1').style.display = "flex";
   isOneOpen = true;
   }
   else{
-    expandUp(displayOne);
     document.getElementById(displayOne).style.backgroundColor = "";
+    document.getElementById('more1').style.display = "";
     isOneOpen = false;
   }
 });
@@ -88,36 +87,36 @@ document.querySelector("#Display1").addEventListener("click", function() {
 document.querySelector("#Display2").addEventListener("click", function() {
   if(!isTwoOpen){
   document.getElementById(displayTwo).style.backgroundColor = "#3A506B";
-  expandDown(displayTwo);
+  document.getElementById('more2').style.display = "flex";
   isTwoOpen = true;
-
   }
   else{
-    expandUp(displayTwo);
     document.getElementById(displayTwo).style.backgroundColor = "";
+    document.getElementById('more2').style.display = "";
     isTwoOpen = false;
   }
 });
+
 document.querySelector("#Display3").addEventListener("click", function() {
   if(!isThreeOpen){
   document.getElementById(displayThree).style.backgroundColor = "#3A506B";
-  expandDown(displayThree);
+  document.getElementById('more3').style.display = "flex";
   isThreeOpen = true;
   }
   else{
-    expandUp(displayThree);
     document.getElementById(displayThree).style.backgroundColor = "";
+    document.getElementById('more3').style.display = "";
     isThreeOpen = false;
   }
 });
 document.querySelector("#Display4").addEventListener("click", function() {
   if(!isFourOpen){
   document.getElementById(displayFour).style.backgroundColor = "#3A506B";
-  expandDown(displayFour);
+  document.getElementById('more4').style.display = "flex";
   isFourOpen = true;
   }
   else{
-    expandUp(displayFour);
+    document.getElementById('more4').style.display = "";
     document.getElementById(displayFour).style.backgroundColor = "";
     isFourOpen = false;
   }
@@ -125,16 +124,16 @@ document.querySelector("#Display4").addEventListener("click", function() {
 document.querySelector("#Display5").addEventListener("click", function() {
   if(!isFiveOpen){
   document.getElementById(displayFive).style.backgroundColor = "#3A506B";
-  expandDown(displayFive);
+  document.getElementById('more5').style.display = "flex";
   isFiveOpen = true;
   }
   else{
-    expandUp(displayFive);
+    document.getElementById('more5').style.display = "";
     document.getElementById(displayFive).style.backgroundColor = "";
     isFiveOpen = false;
   }
 });
-//Get current tab
+  
 
 
 
@@ -207,28 +206,26 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log(json); //remove this later, its only here for debugging purposes
 
       //Summary Display
-      document.getElementById("HL1").innerHTML = json.Articles[0].summary;
-      document.getElementById("HL2").innerHTML = json.Articles[1].summary;
-      document.getElementById("HL3").innerHTML = json.Articles[2].summary;
-      document.getElementById("HL4").innerHTML = json.Articles[3].summary;
-      document.getElementById("HL5").innerHTML = json.Articles[4].summary;
+      document.getElementById("sum1").innerHTML = json.Articles[0].summary;
+      document.getElementById("sum2").innerHTML = json.Articles[1].summary;
+      document.getElementById("sum3").innerHTML = json.Articles[2].summary;
+      document.getElementById("sum4").innerHTML = json.Articles[3].summary;
+      document.getElementById("sum5").innerHTML = json.Articles[4].summary;
 
       //Sentiment Display
-      document.getElementById("HL1").innerHTML = json.Articles[0].sentiment;
-      document.getElementById("HL2").innerHTML = json.Articles[1].sentiment;
-      document.getElementById("HL3").innerHTML = json.Articles[2].sentiment;
-      document.getElementById("HL4").innerHTML = json.Articles[3].sentiment;
-      document.getElementById("HL5").innerHTML = json.Articles[4].sentiment;
+      document.getElementById("sent1").innerHTML = json.Articles[0].sentiment;
+      document.getElementById("sent2").innerHTML = json.Articles[1].sentiment;
+      document.getElementById("sent3").innerHTML = json.Articles[2].sentiment;
+      document.getElementById("sent4").innerHTML = json.Articles[3].sentiment;
+      document.getElementById("sent5").innerHTML = json.Articles[4].sentiment;
       
 
       //Reading Length Display
-      document.getElementById("HL1").innerHTML = json.Articles[0].read_time;
-      document.getElementById("HL2").innerHTML = json.Articles[1].read_time;
-      document.getElementById("HL3").innerHTML = json.Articles[2].read_time;
-      document.getElementById("HL4").innerHTML = json.Articles[3].read_time;
-      document.getElementById("HL5").innerHTML = json.Articles[4].read_time;
-      document.getElementById("loading").style.display = "none";
-      document.getElementById("flex-container").style.display = "flex";
+      document.getElementById("readTime1").innerHTML = json.Articles[0].read_time;
+      document.getElementById("readTime2").innerHTML = json.Articles[1].read_time;
+      document.getElementById("readTime3").innerHTML = json.Articles[2].read_time;
+      document.getElementById("readTime4").innerHTML = json.Articles[3].read_time;
+      document.getElementById("readTime5").innerHTML = json.Articles[4].read_time;
     }
 
   }
