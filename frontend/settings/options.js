@@ -1,4 +1,4 @@
-//THIS IS THE SAMPLE GIVEN BY CHROME DEV DOCS
+// //THIS IS THE SAMPLE GIVEN BY CHROME DEV DOCS
 
 
 // Saves options to chrome.storage
