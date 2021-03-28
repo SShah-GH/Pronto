@@ -31,12 +31,12 @@ function save_options() {
   // stored in chrome.storage.
   function restore_options() {
     chrome.storage.sync.get({
-      business: true,
-      entertainment: true,
-      health: true,
-      science: true,
-      sports: true,
-      technology: true
+      business: false,
+      entertainment: false,
+      health: false,
+      science: false,
+      sports: false,
+      technology: false
     }, function(items) {
       document.getElementById('biz').checked = items.business;
       document.getElementById('ent').checked = items.entertainment;

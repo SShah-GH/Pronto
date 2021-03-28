@@ -199,6 +199,7 @@ document.querySelector("#Display5").addEventListener("click", function() {
 ///////////////////////// Server Integration ////////////////////////////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", function() {
+  getTime();
   const http = new XMLHttpRequest();
   var url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews?categories='; //change //tochange to the categories based on what we saved--probably in another function
   // var url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews'; //change //tochange to the categories based on what we saved--probably in another function
@@ -325,7 +326,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   http2.send();
-  console.log('ending background call');
 });
 });
 
@@ -370,7 +370,27 @@ document.querySelector('#URL5').addEventListener("click", function() {
   console.log(window.json1.Articles[4].url)
 });
 
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////// Time Data //////////////////////////////////////////////////
+function getTime(){
+  var dateOfLoad = new Date();
+  var hourOfLoad = dateOfLoad.getHours();
+  var minOfLoad = dateOfLoad.getMinutes();
+  var dayOfLoad = dateOfLoad.getDay();
+  var monthOfLoad = dateOfLoad.getMonth();
+  console.log(hourOfLoad);
+  console.log(minOfLoad);
+  console.log(dayOfLoad);
+  console.log(monthOfLoad);
+}
+
+function checkTime(){
+
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
