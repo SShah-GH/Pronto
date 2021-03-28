@@ -16,7 +16,8 @@ function save_options() {
       health: health,
       science: science,
       sports: sports,
-      technology: technology
+      technology: technology,
+      isUpdated: true
     }, function() {
       // Update status to let user know options were saved.
       var status = document.getElementById('status');
@@ -31,6 +32,7 @@ function save_options() {
   // stored in chrome.storage.
   function restore_options() {
     chrome.storage.sync.get({
+      isUpdated: false,
       business: false,
       entertainment: false,
       health: false,
