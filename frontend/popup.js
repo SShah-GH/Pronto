@@ -280,7 +280,7 @@ function checkTime(){
       console.log("Loading Because of Settings Change");
       loadContent();
     }
-    else if((d.getMinutes() - items.min) >= 2){
+    else if((d.getMinutes() - items.min) >= 20){
       console.log("Loading Because of Minutes");
       loadContent();
     }
