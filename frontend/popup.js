@@ -1,8 +1,6 @@
 /*
-
 Javascript for the extension main popup, Version 1.0.1
 Developed by Preston Rooker and Spencer Stice (and a little bit by Jacob Sandler)
-
 */
 
 
