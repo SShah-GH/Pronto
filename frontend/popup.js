@@ -395,11 +395,11 @@ function checkTime(){
     rt3: "rt error",
     rt4: "rt error",
     rt5: "rt error",
-    url1: "url error",
-    url2: "url error",
-    url3: "url error",
-    url4: "url error",
-    url5: "url error",
+    url1: "https://www.error.info/",
+    url2: "https://www.error.info/",
+    url3: "https://www.error.info/",
+    url4: "https://www.error.info/",
+    url5: "https://www.error.info/",
     isUpdated: false
 
   }, function(items) {
