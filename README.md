@@ -1,3 +1,8 @@
+## Links
+Devpost: https://devpost.com/software/pronto-zt2niq
+
+Video Demo: https://www.youtube.com/watch?v=LU5fVp96I6s
+
 ## Inspiration
 
 The open spread of information through the news and media is essential to maintaining an informed society. We constantly depend on the media to fill us in on every large and impactful event taking place worldwide. As the world was forced into lockdown by the pandemic, we increasingly relied on electronic media as data and news spread faster than ever before. This vast amount of information has made it difficult to decipher which events are the most important. Not only did this leave millions feeling overwhelmed, but allowed for the spread of misinformation without scrutiny or regulation, resulting in major societal ramifications. 
