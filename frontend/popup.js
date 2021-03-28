@@ -293,8 +293,8 @@ function checkTime(){
       document.getElementById("HL5").innerHTML = items.headFive;
       document.getElementById("loading").style.display = "none";
       document.getElementById("flex-container").style.display = "flex";
-      sentiment_categories = ['Extremely Negative', 'Very Negative', 'Negative', 'Neutral', 'Positive', 'Very Positive', 'Extremely Positive']
-      sentiment_color      = ['#cc0000',  '#ff3333', '#ff8080', '#66b3ff', '#98e698', '#32cd32', '#28a428']
+      sentiment_categories = ['Extremely Negative', 'Extremely Negative', 'Very Negative', 'Negative', 'Neutral', 'Positive', 'Very Positive', 'Extremely Positive','Extremely Positive']
+      sentiment_color      = ['#cc0000','#cc0000',  '#ff3333', '#ff8080', '#66b3ff', '#98e698', '#32cd32', '#28a428','#28a428']
 
       
       
@@ -306,16 +306,16 @@ function checkTime(){
       document.getElementById("sum5").innerHTML = items.sum5;
 
       //Sentiment Display
-      document.getElementById("sent1").innerHTML = sentiment_categories[(items.sent1/0.5 + 3)]
-      document.getElementById("sent01").style.backgroundColor = sentiment_color[(items.sent1/0.5 + 3)];
-      document.getElementById("sent2").innerHTML = sentiment_categories[(items.sent2/0.5 + 3)]
-      document.getElementById("sent02").style.backgroundColor = sentiment_color[(items.sent2/0.5 + 3)];
-      document.getElementById("sent3").innerHTML = sentiment_categories[(items.sent3/0.5 + 3)]
-      document.getElementById("sent03").style.backgroundColor = sentiment_color[(items.sent3/0.5 + 3)];
-      document.getElementById("sent4").innerHTML = sentiment_categories[(items.sent4/0.5 + 3)]
-      document.getElementById("sent04").style.backgroundColor = sentiment_color[(items.sent4/0.5 + 3)];
-      document.getElementById("sent5").innerHTML = sentiment_categories[(items.sent5/0.5 + 3)]
-      document.getElementById("sent05").style.backgroundColor = sentiment_color[(items.sent5/0.5 + 3)];
+      document.getElementById("sent1").innerHTML = sentiment_categories[(items.sent1/0.5 + 4)];
+      document.getElementById("sent01").style.backgroundColor = sentiment_color[(items.sent1/0.5 + 4)];
+      document.getElementById("sent2").innerHTML = sentiment_categories[(items.sent2/0.5 + 4)];
+      document.getElementById("sent02").style.backgroundColor = sentiment_color[(items.sent2/0.5 + 4)];
+      document.getElementById("sent3").innerHTML = sentiment_categories[(items.sent3/0.5 + 4)];
+      document.getElementById("sent03").style.backgroundColor = sentiment_color[(items.sent3/0.5 + 4)];
+      document.getElementById("sent4").innerHTML = sentiment_categories[(items.sent4/0.5 + 4)];
+      document.getElementById("sent04").style.backgroundColor = sentiment_color[(items.sent4/0.5 + 4)];
+      document.getElementById("sent5").innerHTML = sentiment_categories[(items.sent5/0.5 + 4)];
+      document.getElementById("sent05").style.backgroundColor = sentiment_color[(items.sent5/0.5 + 4)];
       
 
       //Reading Length Display
@@ -497,8 +497,8 @@ function loadContent(){
       window.json1 = json;
       console.log(url);
       console.log(json); //remove this later, its only here for debugging purposes
-      sentiment_categories = ['Extremely Negative', 'Very Negative', 'Negative', 'Neutral', 'Positive', 'Very Positive', 'Extremely Positive']
-      sentiment_color      = ['#cc0000',  '#ff3333', '#ff8080', '#66b3ff', '#98e698', '#32cd32', '#28a428']
+      sentiment_categories = ['Extremely Negative', 'Extremely Negative', 'Very Negative', 'Negative', 'Neutral', 'Positive', 'Very Positive', 'Extremely Positive','Extremely Positive']
+      sentiment_color      = ['#cc0000','#cc0000',  '#ff3333', '#ff8080', '#66b3ff', '#98e698', '#32cd32', '#28a428','#28a428']
 
       function isValidSummary(summary){
         if(summary.length < 100 || summary.length > 3500)
@@ -514,16 +514,16 @@ function loadContent(){
       setSums(isValidSummary(json.Articles[0].summary),isValidSummary(json.Articles[1].summary),isValidSummary(json.Articles[2].summary),isValidSummary(json.Articles[3].summary),isValidSummary(json.Articles[4].summary));
 
       //Sentiment Display
-      document.getElementById("sent1").innerHTML = sentiment_categories[(json.Articles[0].sentiment/0.5 + 3)]
-      document.getElementById("sent01").style.backgroundColor = sentiment_color[(json.Articles[0].sentiment/0.5 + 3)];
-      document.getElementById("sent2").innerHTML = sentiment_categories[(json.Articles[1].sentiment/0.5 + 3)]
-      document.getElementById("sent02").style.backgroundColor = sentiment_color[(json.Articles[1].sentiment/0.5 + 3)];
-      document.getElementById("sent3").innerHTML = sentiment_categories[(json.Articles[2].sentiment/0.5 + 3)]
-      document.getElementById("sent03").style.backgroundColor = sentiment_color[(json.Articles[2].sentiment/0.5 + 3)];
-      document.getElementById("sent4").innerHTML = sentiment_categories[(json.Articles[3].sentiment/0.5 + 3)]
-      document.getElementById("sent04").style.backgroundColor = sentiment_color[(json.Articles[3].sentiment/0.5 + 3)];
-      document.getElementById("sent5").innerHTML = sentiment_categories[(json.Articles[4].sentiment/0.5 + 3)]
-      document.getElementById("sent05").style.backgroundColor = sentiment_color[(json.Articles[4].sentiment/0.5 + 3)];
+      document.getElementById("sent1").innerHTML = sentiment_categories[(json.Articles[0].sentiment/0.5 + 4)]
+      document.getElementById("sent01").style.backgroundColor = sentiment_color[(json.Articles[0].sentiment/0.5 + 4)];
+      document.getElementById("sent2").innerHTML = sentiment_categories[(json.Articles[1].sentiment/0.5 + 4)]
+      document.getElementById("sent02").style.backgroundColor = sentiment_color[(json.Articles[1].sentiment/0.5 + 4)];
+      document.getElementById("sent3").innerHTML = sentiment_categories[(json.Articles[2].sentiment/0.5 + 4)]
+      document.getElementById("sent03").style.backgroundColor = sentiment_color[(json.Articles[2].sentiment/0.5 + 4)];
+      document.getElementById("sent4").innerHTML = sentiment_categories[(json.Articles[3].sentiment/0.5 + 4)]
+      document.getElementById("sent04").style.backgroundColor = sentiment_color[(json.Articles[3].sentiment/0.5 + 4)];
+      document.getElementById("sent5").innerHTML = sentiment_categories[(json.Articles[4].sentiment/0.5 + 4)]
+      document.getElementById("sent05").style.backgroundColor = sentiment_color[(json.Articles[4].sentiment/0.5 + 4)];
       setSents(json.Articles[0].sentiment,json.Articles[1].sentiment,json.Articles[2].sentiment,json.Articles[3].sentiment,json.Articles[4].sentiment);
 
       //Reading Length Display
