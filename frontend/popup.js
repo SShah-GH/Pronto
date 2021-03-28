@@ -305,23 +305,27 @@ document.querySelector("#go-home").addEventListener("click", function() {
   console.log(curr_display);
   if(curr_display == 1){
     display1();
+    document.getElementById("options_bar").style.display = "none";
   }
   else if(curr_display == 2){
     display2();
+    document.getElementById("options_bar").style.display = "none";
   }
   else if(curr_display == 3){
     display3();
+    document.getElementById("options_bar").style.display = "none";
   }
   else if(curr_display == 4){
     display4();
+    document.getElementById("options_bar").style.display = "none";
   }
   else if(curr_display == 5){
     display5();
+    document.getElementById("options_bar").style.display = "none";
   }
 });
   
   
-
 
 
 ////////////////////// URL Linking ///////////////////////////////////////////////////////////////
@@ -352,6 +356,7 @@ document.querySelector('#URL5').addEventListener("click", function() {
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
 
@@ -699,3 +704,5 @@ function loadContent(){
 document.addEventListener("DOMContentLoaded", function() {
   checkTime();
 });
+
+
