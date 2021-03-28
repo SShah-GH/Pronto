@@ -197,6 +197,7 @@ document.querySelector("#Display5").addEventListener("click", function() {
 ///////////////////////// Server Integration ////////////////////////////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", function() {
+  getTime();
   const http = new XMLHttpRequest();
   var url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews?categories='; //change //tochange to the categories based on what we saved--probably in another function
   // var url = 'https://us-west2-python-test-308204.cloudfunctions.net/getNews'; //change //tochange to the categories based on what we saved--probably in another function
@@ -261,20 +262,32 @@ document.addEventListener("DOMContentLoaded", function() {
       window.json1 = json;
       console.log(url);
       console.log(json); //remove this later, its only here for debugging purposes
+      sentiment_categories = ['Extremely Negative', 'Very Negative', 'Negative', 'Neutral', 'Positive', 'Very Positive', 'Extremely Positive']
+      sentiment_color      = ['#cc0000',  '#ff3333', '#ff8080', '#66b3ff', '#98e698', '#32cd32', '#28a428']
 
+      function isValidSummary(summary){
+        if(summary.length < 100 || summary.length > 3500)
+          return 'Summary is Blocked by Website';
+        return summary;
+      }
       //Summary Display
-      document.getElementById("sum1").innerHTML = json.Articles[0].summary;
-      document.getElementById("sum2").innerHTML = json.Articles[1].summary;
-      document.getElementById("sum3").innerHTML = json.Articles[2].summary;
-      document.getElementById("sum4").innerHTML = json.Articles[3].summary;
-      document.getElementById("sum5").innerHTML = json.Articles[4].summary;
+      document.getElementById("sum1").innerHTML = isValidSummary(json.Articles[0].summary);
+      document.getElementById("sum2").innerHTML = isValidSummary(json.Articles[1].summary);
+      document.getElementById("sum3").innerHTML = isValidSummary(json.Articles[2].summary);
+      document.getElementById("sum4").innerHTML = isValidSummary(json.Articles[3].summary);
+      document.getElementById("sum5").innerHTML = isValidSummary(json.Articles[4].summary);
 
       //Sentiment Display
-      document.getElementById("sent1").innerHTML = json.Articles[0].sentiment;
-      document.getElementById("sent2").innerHTML = json.Articles[1].sentiment;
-      document.getElementById("sent3").innerHTML = json.Articles[2].sentiment;
-      document.getElementById("sent4").innerHTML = json.Articles[3].sentiment;
-      document.getElementById("sent5").innerHTML = json.Articles[4].sentiment;
+      document.getElementById("sent1").innerHTML = sentiment_categories[(json.Articles[0].sentiment/0.5 + 3)]
+      document.getElementById("sent1").style.backgroundColor = sentiment_color[(json.Articles[0].sentiment/0.5 + 3)];
+      document.getElementById("sent2").innerHTML = sentiment_categories[(json.Articles[1].sentiment/0.5 + 3)]
+      document.getElementById("sent2").style.backgroundColor = sentiment_color[(json.Articles[1].sentiment/0.5 + 3)];
+      document.getElementById("sent3").innerHTML = sentiment_categories[(json.Articles[2].sentiment/0.5 + 3)]
+      document.getElementById("sent3").style.backgroundColor = sentiment_color[(json.Articles[2].sentiment/0.5 + 3)];
+      document.getElementById("sent4").innerHTML = sentiment_categories[(json.Articles[3].sentiment/0.5 + 3)]
+      document.getElementById("sent4").style.backgroundColor = sentiment_color[(json.Articles[3].sentiment/0.5 + 3)];
+      document.getElementById("sent5").innerHTML = sentiment_categories[(json.Articles[4].sentiment/0.5 + 3)]
+      document.getElementById("sent5").style.backgroundColor = sentiment_color[(json.Articles[4].sentiment/0.5 + 3)];
       
 
       //Reading Length Display
@@ -311,7 +324,6 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   
   http2.send();
-  console.log('ending background call');
 });
 });
 
@@ -356,7 +368,27 @@ document.querySelector('#URL5').addEventListener("click", function() {
   console.log(window.json1.Articles[4].url)
 });
 
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+/////////////////////////////////////// Time Data //////////////////////////////////////////////////
+function getTime(){
+  var dateOfLoad = new Date();
+  var hourOfLoad = dateOfLoad.getHours();
+  var minOfLoad = dateOfLoad.getMinutes();
+  var dayOfLoad = dateOfLoad.getDay();
+  var monthOfLoad = dateOfLoad.getMonth();
+  console.log(hourOfLoad);
+  console.log(minOfLoad);
+  console.log(dayOfLoad);
+  console.log(monthOfLoad);
+}
+
+function checkTime(){
+
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////

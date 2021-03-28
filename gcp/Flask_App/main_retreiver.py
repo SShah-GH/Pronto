@@ -92,17 +92,30 @@ def RetreiveNews(cat):
     # BBC news api
     # following query parameters are used
     # source, sortBy and apiKey
-    query_params = {
-      "sortBy": "top",
-      "apiKey": "196537e4a5814693b334cac3e4723a38",
-      "category"  : cat
-    }
-    main_url = " https://newsapi.org/v2/top-headlines?country=us&category=" + cat + "&apiKey=196537e4a5814693b334cac3e4723a38"
- 
-    # fetching data in json format
-    res = requests.get(main_url, params=query_params)
-    top_articles = res.json()
-    article = top_articles["articles"]
+    call_success = False
+
+    while call_success == False:
+        apiKeysList = ["d7fa03ba28f94eba97ffb5276cca060a", "716c0526d1fc42008fdfd127fc0d6f9e", "a9e142b8b32a460497c02018511fbb65", "3670b6fd717a4ad0a49ba042649edef7", "196537e4a5814693b334cac3e4723a38", "39810cc78e384d3a9c416070fdeddc64"]
+        apiKey = random.choice(apiKeysList)
+        print(apiKey)
+
+        
+        query_params = {
+        "sortBy": "top",
+        "apiKey": apiKey,
+        "category"  : cat
+        }
+        main_url = " https://newsapi.org/v2/top-headlines?country=us&category=" + cat + "&apiKey=" + apiKey
+
+        res = requests.get(main_url, params=query_params)
+        top_articles = res.json()
+        # fetching data in json format
+        try:
+          article = top_articles["articles"]  
+        except KeyError as e:
+            call_success = False
+            continue
+        call_success = True
 
     results = []
 
