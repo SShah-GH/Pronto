@@ -49,6 +49,8 @@ function display1(){
     // document.getElementById("fa-chevron-left").style.visibility = "hidden";
     document.getElementById(displayOne).style.display = "";
     document.getElementById(displayOne).style.backgroundColor = "#3A506B";
+    document.getElementById(displayOne).style.marginBottom = "0px";
+    document.getElementById("options_bar").style.display = "flex";
 
     document.getElementById(displayTwo).style.display = "none";
     document.getElementById(displayThree).style.display = "none";
@@ -64,12 +66,13 @@ function display1(){
     isOneOpen = true;
   }
   else{
+    document.getElementById(displayOne).style.marginBottom = "";
     document.getElementById(displayOne).style.backgroundColor = "";
     document.getElementById('more1').style.display = "";
     document.getElementById("loading1").style.display = "none";
 
     // document.getElementById("fa-chevron-left").style.visibility = "";
-    document.getElementById("options_bar").style.display = "flex";
+
     document.getElementById(displayTwo).style.display = "";
     document.getElementById(displayThree).style.display = "";
     document.getElementById(displayFour).style.display = "";
@@ -84,6 +87,8 @@ function display2(){
   if(!isTwoOpen){ 
     document.getElementById(displayTwo).style.display = ""; 
     document.getElementById(displayTwo).style.backgroundColor = "#3A506B";
+    document.getElementById("options_bar").style.display = "flex";
+    document.getElementById(displayTwo).style.marginBottom = "0px";
     
     if(isLoaded){
       document.getElementById('more2').style.display = "flex";
@@ -92,7 +97,7 @@ function display2(){
       document.getElementById("loading2").style.display = "block";
     }
 
-    document.getElementById("options_bar").style.display = "flex";
+
     document.getElementById(displayOne).style.display = "none";
     document.getElementById(displayThree).style.display = "none";
     document.getElementById(displayFour).style.display = "none";
@@ -101,9 +106,11 @@ function display2(){
     isTwoOpen = true;
   }
   else{
+    document.getElementById(displayOne).style.marginBottom = "";
     document.getElementById(displayTwo).style.backgroundColor = "";
     document.getElementById('more2').style.display = "";
     document.getElementById("loading2").style.display = "none";
+
 
     document.getElementById(displayOne).style.display = "";
     document.getElementById(displayThree).style.display = "";
@@ -126,6 +133,7 @@ function display3(){
       document.getElementById("loading3").style.display = "block";
     }
 
+    document.getElementById(displayThree).style.marginBottom = "0px";
     document.getElementById("options_bar").style.display = "flex";
     document.getElementById(displayTwo).style.display = "none";
     document.getElementById(displayOne).style.display = "none";
@@ -135,6 +143,7 @@ function display3(){
     isThreeOpen = true;
   }
   else{
+    document.getElementById(displayOne).style.marginBottom = "";
     document.getElementById(displayThree).style.backgroundColor = "";
     document.getElementById('more3').style.display = "";
     document.getElementById("loading3").style.display = "none";
@@ -160,6 +169,7 @@ function display4(){
       document.getElementById("loading4").style.display = "block";
     }
 
+    document.getElementById(displayFour).style.marginBottom = "0px";
     document.getElementById("options_bar").style.display = "flex";
     document.getElementById(displayTwo).style.display = "none";
     document.getElementById(displayThree).style.display = "none";
@@ -169,6 +179,7 @@ function display4(){
     isFourOpen = true;
   }
   else{
+    document.getElementById(displayOne).style.marginBottom = "";
     document.getElementById('more4').style.display = "";
     document.getElementById(displayFour).style.backgroundColor = "";
     document.getElementById("loading4").style.display = "none";
@@ -196,6 +207,7 @@ function display5(){
       document.getElementById("loading5").style.display = "block";
     }
 
+    document.getElementById(displayFive).style.marginBottom = "0px";
     document.getElementById("options_bar").style.display = "flex";
     document.getElementById(displayTwo).style.display = "none";
     document.getElementById(displayThree).style.display = "none";
@@ -205,6 +217,7 @@ function display5(){
     isFiveOpen = true;
   }
   else{
+    document.getElementById(displayOne).style.marginBottom = "";
     document.getElementById('more5').style.display = "";
     document.getElementById(displayFive).style.backgroundColor = "";
     document.getElementById("loading5").style.display = "none";
@@ -431,8 +444,8 @@ function checkTime(){
       document.getElementById("HL5").innerHTML = items.headFive;
       document.getElementById("loading").style.display = "none";
       document.getElementById("flex-container").style.display = "flex";
-      sentiment_categories = ['Extremely Negative', 'Extremely Negative', 'Very Negative', 'Negative', 'Neutral', 'Positive', 'Very Positive', 'Extremely Positive','Extremely Positive']
-      sentiment_color      = ['#cc0000','#cc0000',  '#ff3333', '#ff8080', '#66b3ff', '#98e698', '#32cd32', '#28a428','#28a428']
+      sentiment_categories = ['Overwhelmingly Negative', 'Overwhelmingly Negative', 'Extremely Negative', 'Extremely Negative', 'Very Negative', 'Negative', 'Neutral', 'Positive', 'Very Positive', 'Extremely Positive','Extremely Positive', 'Overwhelmingly Positive', 'Overwhelmingly Positive',]
+      sentiment_color      = ['#d36582','#d36582','#cc0000','#cc0000',  '#ff3333', '#ff8080', '#66b3ff', '#98e698', '#32cd32', '#28a428','#28a428', '#003300', '#003300']
 
       
       
@@ -444,16 +457,16 @@ function checkTime(){
       document.getElementById("sum5").innerHTML = items.sum5;
 
       //Sentiment Display
-      document.getElementById("sent1").innerHTML = sentiment_categories[(items.sent1/0.5 + 4)];
-      document.getElementById("sent01").style.backgroundColor = sentiment_color[(items.sent1/0.5 + 4)];
-      document.getElementById("sent2").innerHTML = sentiment_categories[(items.sent2/0.5 + 4)];
-      document.getElementById("sent02").style.backgroundColor = sentiment_color[(items.sent2/0.5 + 4)];
-      document.getElementById("sent3").innerHTML = sentiment_categories[(items.sent3/0.5 + 4)];
-      document.getElementById("sent03").style.backgroundColor = sentiment_color[(items.sent3/0.5 + 4)];
-      document.getElementById("sent4").innerHTML = sentiment_categories[(items.sent4/0.5 + 4)];
-      document.getElementById("sent04").style.backgroundColor = sentiment_color[(items.sent4/0.5 + 4)];
-      document.getElementById("sent5").innerHTML = sentiment_categories[(items.sent5/0.5 + 4)];
-      document.getElementById("sent05").style.backgroundColor = sentiment_color[(items.sent5/0.5 + 4)];
+      document.getElementById("sent1").innerHTML = sentiment_categories[(items.sent1/0.5 + 6)];
+      document.getElementById("sent01").style.backgroundColor = sentiment_color[(items.sent1/0.5 + 6)];
+      document.getElementById("sent2").innerHTML = sentiment_categories[(items.sent2/0.5 + 6)];
+      document.getElementById("sent02").style.backgroundColor = sentiment_color[(items.sent2/0.5 + 6)];
+      document.getElementById("sent3").innerHTML = sentiment_categories[(items.sent3/0.5 + 6)];
+      document.getElementById("sent03").style.backgroundColor = sentiment_color[(items.sent3/0.5 + 6)];
+      document.getElementById("sent4").innerHTML = sentiment_categories[(items.sent4/0.5 + 6)];
+      document.getElementById("sent04").style.backgroundColor = sentiment_color[(items.sent4/0.5 + 6)];
+      document.getElementById("sent5").innerHTML = sentiment_categories[(items.sent5/0.5 + 6)];
+      document.getElementById("sent05").style.backgroundColor = sentiment_color[(items.sent5/0.5 + 6)];
       
 
       //Reading Length Display
@@ -651,7 +664,6 @@ function loadContent(){
       document.getElementById("HL5").innerHTML = json.Articles[4].title;
       document.getElementById("loading").style.display = "none";
       document.getElementById("flex-container").style.display = "flex";
-      setHeadlines(json.Articles[0].title,json.Articles[1].title,json.Articles[2].title,json.Articles[3].title,json.Articles[4].title);
     }
   };
   http.send(); // Add settings like ("categories=technology-health")
@@ -668,11 +680,11 @@ function loadContent(){
   http2.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       var json = JSON.parse(http2.responseText); 
-      window.json1 = json;
+      window.json2 = json;
       console.log(url);
       console.log(json); //remove this later, its only here for debugging purposes
-      sentiment_categories = ['Extremely Negative', 'Extremely Negative', 'Very Negative', 'Negative', 'Neutral', 'Positive', 'Very Positive', 'Extremely Positive','Extremely Positive']
-      sentiment_color      = ['#cc0000','#cc0000',  '#ff3333', '#ff8080', '#66b3ff', '#98e698', '#32cd32', '#28a428','#28a428']
+      sentiment_categories = ['Overwhelmingly Negative', 'Overwhelmingly Negative', 'Extremely Negative', 'Extremely Negative', 'Very Negative', 'Negative', 'Neutral', 'Positive', 'Very Positive', 'Extremely Positive','Extremely Positive', 'Overwhelmingly Positive', 'Overwhelmingly Positive',]
+      sentiment_color      = ['#d36582','#d36582','#cc0000','#cc0000',  '#ff3333', '#ff8080', '#66b3ff', '#98e698', '#32cd32', '#28a428','#28a428', '#003300', '#003300']
 
       function isValidSummary(summary){
         if(summary.length < 100 || summary.length > 3500)
@@ -688,16 +700,16 @@ function loadContent(){
       setSums(isValidSummary(json.Articles[0].summary),isValidSummary(json.Articles[1].summary),isValidSummary(json.Articles[2].summary),isValidSummary(json.Articles[3].summary),isValidSummary(json.Articles[4].summary));
 
       //Sentiment Display
-      document.getElementById("sent1").innerHTML = sentiment_categories[(json.Articles[0].sentiment/0.5 + 4)]
-      document.getElementById("sent01").style.backgroundColor = sentiment_color[(json.Articles[0].sentiment/0.5 + 4)];
-      document.getElementById("sent2").innerHTML = sentiment_categories[(json.Articles[1].sentiment/0.5 + 4)]
-      document.getElementById("sent02").style.backgroundColor = sentiment_color[(json.Articles[1].sentiment/0.5 + 4)];
-      document.getElementById("sent3").innerHTML = sentiment_categories[(json.Articles[2].sentiment/0.5 + 4)]
-      document.getElementById("sent03").style.backgroundColor = sentiment_color[(json.Articles[2].sentiment/0.5 + 4)];
-      document.getElementById("sent4").innerHTML = sentiment_categories[(json.Articles[3].sentiment/0.5 + 4)]
-      document.getElementById("sent04").style.backgroundColor = sentiment_color[(json.Articles[3].sentiment/0.5 + 4)];
-      document.getElementById("sent5").innerHTML = sentiment_categories[(json.Articles[4].sentiment/0.5 + 4)]
-      document.getElementById("sent05").style.backgroundColor = sentiment_color[(json.Articles[4].sentiment/0.5 + 4)];
+      document.getElementById("sent1").innerHTML = sentiment_categories[(json.Articles[0].sentiment/0.5 + 6)]
+      document.getElementById("sent01").style.backgroundColor = sentiment_color[(json.Articles[0].sentiment/0.5 + 6)];
+      document.getElementById("sent2").innerHTML = sentiment_categories[(json.Articles[1].sentiment/0.5 + 6)]
+      document.getElementById("sent02").style.backgroundColor = sentiment_color[(json.Articles[1].sentiment/0.5 + 6)];
+      document.getElementById("sent3").innerHTML = sentiment_categories[(json.Articles[2].sentiment/0.5 + 6)]
+      document.getElementById("sent03").style.backgroundColor = sentiment_color[(json.Articles[2].sentiment/0.5 + 6)];
+      document.getElementById("sent4").innerHTML = sentiment_categories[(json.Articles[3].sentiment/0.5 + 6)]
+      document.getElementById("sent04").style.backgroundColor = sentiment_color[(json.Articles[3].sentiment/0.5 + 6)];
+      document.getElementById("sent5").innerHTML = sentiment_categories[(json.Articles[4].sentiment/0.5 + 6)]
+      document.getElementById("sent05").style.backgroundColor = sentiment_color[(json.Articles[4].sentiment/0.5 + 6)];
       setSents(json.Articles[0].sentiment,json.Articles[1].sentiment,json.Articles[2].sentiment,json.Articles[3].sentiment,json.Articles[4].sentiment);
 
       //Reading Length Display
@@ -713,6 +725,22 @@ function loadContent(){
       document.getElementById("loading3").style.display = "none";
       document.getElementById("loading4").style.display = "none";
       document.getElementById("loading5").style.display = "none";
+
+
+      window.json1.Articles[0].url = window.json2.Articles[0].url;
+      window.json1.Articles[1].url = window.json2.Articles[1].url;
+      window.json1.Articles[2].url = window.json2.Articles[2].url;
+      window.json1.Articles[3].url = window.json2.Articles[3].url;
+      window.json1.Articles[4].url = window.json2.Articles[4].url;
+
+      document.getElementById("HL1").innerHTML = json.Articles[0].title;
+      document.getElementById("HL2").innerHTML = json.Articles[1].title;
+      document.getElementById("HL3").innerHTML = json.Articles[2].title;
+      document.getElementById("HL4").innerHTML = json.Articles[3].title;
+      document.getElementById("HL5").innerHTML = json.Articles[4].title;
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("flex-container").style.display = "flex";
+      setHeadlines(json.Articles[0].title,json.Articles[1].title,json.Articles[2].title,json.Articles[3].title,json.Articles[4].title);
 
       isLoaded = true;
       if(isOneOpen){
