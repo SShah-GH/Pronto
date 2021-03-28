@@ -1,0 +1,190 @@
+/* Styles for settings*/
+
+#settingsTitle{
+  font-family: 'Newsreader', serif;
+  text-align: center;
+  font-size: 100px;
+  font-weight: 400;
+  margin: 0;
+  color: #ffffff;
+  background-color: #0B132B;
+  padding: 10px;
+}
+body{
+  background-color: #3a506b;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+}
+
+.flex-container{
+  color: #ffffff;
+  padding-bottom: 10px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: row;
+}
+div.flex-item{
+  padding: 10px 17% 10px 17% ;
+  text-align: center;
+  border-radius: 10px 10px 10px 10px;
+  color: #ffffff;
+  transition: background-color 0.4s ease-in-out;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 20px;
+  animation: fadeIn 1s forwards;
+}
+
+#like{
+    color: #ffffff;
+    font-size: 30px;
+}
+#as{
+    display: inline-block;
+    color: #ffffff;
+    font-size: 30px;
+}
+.categoryOptions{
+    margin: 0 auto;
+}
+#categoryOptions label {
+    float: left;
+  }
+  #categoryOptions ul {
+    margin: 10;
+    list-style-type: none;
+    float: left;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: left;
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0;
+    color: #ffffff;
+  }
+
+  #catLabel{
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    font-size: 100px;
+    font-weight: 400;
+    margin: 0;
+    color: #ffffff;
+  }
+  /* Customize the label (the container) */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-left: 50%;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  #catSel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-align: center;
+    font-size: 70px;
+    font-weight: 400;
+    margin-bottom: 15px;
+    color: #ffffff;
+    background-color: #1C2541;
+    padding-bottom: 13px;
+    border-bottom: 10px;
+  }
+
+  #status{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+  }
+
+  #save {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    color: rgb(255, 255, 255); 
+    font-size: 30px; 
+    line-height: 30px; 
+    padding: 6px; 
+    border-radius: 10px; 
+    font-family: Georgia, serif; 
+    font-weight: normal; 
+    text-decoration: none; 
+    font-style: normal; 
+    font-variant: normal; 
+    text-transform: none;
+    background-color: #1C2541; 
+    /* background-image: linear-gradient(to right, rgb(58, 80, 107) 0%, rgb(28, 37, 65) 37%, rgb(11, 19, 43) 100%);  */
+    box-shadow: rgb(0, 0, 0) 5px 5px 15px 5px;  
+    border: 2px solid rgb(28, 110, 164); 
+    display: inline-block;}
+    #save:hover {
+    background: #3A506B; }
+    #save:active {
+    background: #0B132B; }
+
+  .all{
+    color: #ffffff;
+  }
