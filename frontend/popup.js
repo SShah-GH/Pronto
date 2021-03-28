@@ -687,8 +687,12 @@ function loadContent(){
       sentiment_color      = ['#d36582','#d36582','#cc0000','#cc0000',  '#ff3333', '#ff8080', '#66b3ff', '#98e698', '#32cd32', '#28a428','#28a428', '#003300', '#003300']
 
       function isValidSummary(summary){
-        if(summary.length < 100 || summary.length > 3500)
+        if(summary.length < 100 ){
           return 'Summary is Blocked by Website';
+        }
+        else if(summary.length > 7000){
+          return 'Article Too Long To Summarize';
+        }
         return summary;
       }
       //Summary Display
