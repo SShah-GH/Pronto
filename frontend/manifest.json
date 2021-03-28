@@ -4,7 +4,7 @@
     
     "manifest_version": 3,
     "name": "Pronto",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "host permissions": [
         "https://*/",
         "https://us-central1-python-test-308204.cloudfunctions.net/",

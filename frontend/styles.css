@@ -121,14 +121,6 @@ a.botflex:visited{
     
 }
 
-.fa-arrow-circle-right{
-    opacity: 1;
-    transition: opacity 0.2s ease-in-out;
-    font-size: 20px;
-}
-.fa-arrow-circle-right:hover{
-    opacity: 0.4;
-}
 #Display2{
     animation: fadeIn 2.0s forwards;
     animation-delay: 0.1875s;
@@ -149,6 +141,16 @@ a.botflex:visited{
     animation: fadeIn 1.8s forwards;
     animation-delay: 0.75s;
 }
+
+.fa-arrow-circle-right{
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    font-size: 20px;
+}
+.fa-arrow-circle-right:hover{
+    opacity: 0.4;
+}
+
 #loading{
     display: block;
     font-size: 80px;
@@ -156,7 +158,6 @@ a.botflex:visited{
     color: white;
     margin: 50px;
 }
-
 #loading1{
     display: none;
     font-size: 80px;
@@ -213,12 +214,13 @@ a.botflex:visited{
 
 .more{
     display: none;
+    flex-direction: column;
 }
 
 .flexible{
     display: flex;
-    flex-direction: column;
-    width: 140px;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .sum{
@@ -231,6 +233,8 @@ a.botflex:visited{
     border-radius: 10px;
     font-size: 15px;
     text-align: center;
+    padding: 5px 15px;
+    margin: 5px;
 }
 .sent{
     border-style: solid;
@@ -239,4 +243,6 @@ a.botflex:visited{
     border-radius: 10px;
     font-size: 15px;
     text-align: center;
+    padding: 5px 15px;
+    margin: 5px;
 }
