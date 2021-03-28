@@ -267,6 +267,11 @@ function checkTime(){
     rt3: "rt error",
     rt4: "rt error",
     rt5: "rt error",
+    url1: "url error",
+    url2: "url error",
+    url3: "url error",
+    url4: "url error",
+    url5: "url error",
     isUpdated: false
 
   }, function(items) {
@@ -348,6 +353,31 @@ function checkTime(){
         document.getElementById('more5').style.display = "flex";
       }
     }
+    var u1 = {
+      url: "https://updatefaker.com/w98/index.html"
+    };
+    var u2 = {
+      url: "https://updatefaker.com/xp/index.html"
+    };
+    var u3 = {
+      url: "https://updatefaker.com/osx/index.html"
+    };
+    var u4 = {
+      url: "https://updatefaker.com/windows10/index.html"
+    };
+    var u5 = {
+      url: "https://updatefaker.com/w98/index.html"
+    };
+    var json = {
+      Articles: [u1,u2,u3,u4,u5]
+    };
+    window.json1 = json;
+    window.json1.Articles[0].url = items.url1;
+    window.json1.Articles[1].url = items.url2;
+    window.json1.Articles[2].url = items.url3;
+    window.json1.Articles[3].url = items.url4;
+    window.json1.Articles[4].url = items.url5;
+
     
   });
     
@@ -424,7 +454,18 @@ function setUpdate(){
     console.log("Update Saved");
   });
 }
-
+function setURLs(u1,u2,u3,u4,u5){
+  chrome.storage.sync.set({
+    url1: u1,
+    url2: u2,
+    url3: u3,
+    url4: u4,
+    url5: u5
+  },
+  function(){
+    console.log("URLs Saved");
+  });
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -557,8 +598,9 @@ function loadContent(){
         document.getElementById('more5').style.display = "flex";
       }
     }
-    setTime();
+    setURLs(window.json1.Articles[0].url,window.json1.Articles[1].url,window.json1.Articles[2].url,window.json1.Articles[3].url,window.json1.Articles[4].url);
     setUpdate();
+    setTime();
     console.log("All Saved, You're Good To Go");
   }
   
