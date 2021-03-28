@@ -7,6 +7,7 @@ from google.cloud import language_v1
 from boilerpy3 import extractors
 import random
 import json
+import urllib.request
 #import helpers.py
 
 # importing requests package
@@ -16,14 +17,15 @@ app = Flask(__name__)
 CORS(app)
 
 def getContent(url):
-    
 
     extractor = extractors.ArticleExtractor()
 
     # From a URL
     resp = requests.get(url)
     if resp.ok:
-            content = extractor.get_content_from_url(url)
+            r = urllib.request.Request(url, headers= {'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'})
+            html = urllib.request.urlopen(r).read().decode()
+            content = extractor.get_content(html)
     else:
         content = 'error'
     
@@ -91,17 +93,33 @@ def RetreiveNews(cat):
     # BBC news api
     # following query parameters are used
     # source, sortBy and apiKey
-    query_params = {
-      "sortBy": "top",
-      "apiKey": "196537e4a5814693b334cac3e4723a38",
-      "category"  : cat
-    }
-    main_url = " https://newsapi.org/v2/top-headlines?country=us&category=" + cat + "&apiKey=196537e4a5814693b334cac3e4723a38"
- 
-    # fetching data in json format
-    res = requests.get(main_url, params=query_params)
-    top_articles = res.json()
-    article = top_articles["articles"]
+    call_success = False
+    curr_key = 0
+
+    while call_success == False:
+        apiKeysList = ["f614de16d9154bbab2fefbfb24771ac9", "1c1a415df0f04b0199236dec9d3baf56", "0b9e04a358b84f0f894b7d20bad06a45", "d7fa03ba28f94eba97ffb5276cca060a", "716c0526d1fc42008fdfd127fc0d6f9e", "a9e142b8b32a460497c02018511fbb65", "3670b6fd717a4ad0a49ba042649edef7", "196537e4a5814693b334cac3e4723a38", "39810cc78e384d3a9c416070fdeddc64"]
+        apiKey = apiKeysList[curr_key]
+        print(curr_key)
+        print(apiKey)
+
+        
+        query_params = {
+        "sortBy": "top",
+        "apiKey": apiKey,
+        "category"  : cat
+        }
+        main_url = " https://newsapi.org/v2/top-headlines?country=us&category=" + cat + "&apiKey=" + apiKey
+
+        res = requests.get(main_url, params=query_params)
+        top_articles = res.json()
+        # fetching data in json format
+        try:
+          article = top_articles["articles"]  
+        except KeyError as e:
+            call_success = False
+            curr_key = curr_key + 1
+            continue
+        call_success = True
 
     results = []
 
@@ -113,16 +131,30 @@ def RetreiveNews(cat):
 
 def listFill(category_list, top_results, used_articles):
 
-    if len(category_list) == 0:
-        rand_cat = 'general'
-    else:
-        rand_cat = random.choice(category_list)
+    cat_num = len(category_list)
+    if cat_num == 0:
+        category_list = ['general']
 
-    while(len(top_results) < 5): #if list is not full we will pull articles from a random category    
-        for ar in RetreiveNews(rand_cat):
+    article_list = []
+    for cat in category_list:
+        temp_list = RetreiveNews(cat)
+        for ar in temp_list:
             if ar not in top_results and ar not in used_articles:
-                top_results.append(ar)
+                article_list.append(ar)
+            if len(article_list) != 0 and len(article_list)%5 == 0:
                 break
+ 
+    curr_cat = 0
+    while(len(top_results) < 5): #if list is not full we will pull articles from a random category
+        if curr_cat >= len(article_list):
+            curr_cat = 0
+        ar = article_list[curr_cat]
+        if ar not in top_results and ar not in used_articles:
+            top_results.append(ar)
+            curr_cat = int(curr_cat/5 + 5)
+        else:
+            curr_cat = curr_cat + 1
+
 
     return top_results
 
@@ -161,7 +193,7 @@ def getTop5(category_list):
 def NewsHeadlines():
     print('Starting NewsHeadlines')
 
-    cat_list = ['business']
+    cat_list = ['health']
     
     top_results = getTop5(cat_list)
  

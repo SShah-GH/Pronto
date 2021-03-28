@@ -40,8 +40,14 @@ document.querySelector('#go-to-options').addEventListener("click", function() {
 
 ///////////////////  More Information Events /////////////////////////////////////////////
 
-document.querySelector("#Display1").addEventListener("click", function() {
+
+curr_display = 0;
+
+function display1(){
+  curr_display = 1;
   if(!isOneOpen){
+    // document.getElementById("fa-chevron-left").style.visibility = "hidden";
+    document.getElementById(displayOne).style.display = "";
     document.getElementById(displayOne).style.backgroundColor = "#3A506B";
 
     document.getElementById(displayTwo).style.display = "none";
@@ -62,6 +68,8 @@ document.querySelector("#Display1").addEventListener("click", function() {
     document.getElementById('more1').style.display = "";
     document.getElementById("loading1").style.display = "none";
 
+    // document.getElementById("fa-chevron-left").style.visibility = "";
+    document.getElementById("options_bar").style.display = "flex";
     document.getElementById(displayTwo).style.display = "";
     document.getElementById(displayThree).style.display = "";
     document.getElementById(displayFour).style.display = "";
@@ -69,11 +77,14 @@ document.querySelector("#Display1").addEventListener("click", function() {
 
     isOneOpen = false;
   }
-});
+}
 
-document.querySelector("#Display2").addEventListener("click", function() {
-  if(!isTwoOpen){  
+function display2(){
+  curr_display = 2;
+  if(!isTwoOpen){ 
+    document.getElementById(displayTwo).style.display = ""; 
     document.getElementById(displayTwo).style.backgroundColor = "#3A506B";
+    
     if(isLoaded){
       document.getElementById('more2').style.display = "flex";
     }
@@ -81,6 +92,7 @@ document.querySelector("#Display2").addEventListener("click", function() {
       document.getElementById("loading2").style.display = "block";
     }
 
+    document.getElementById("options_bar").style.display = "flex";
     document.getElementById(displayOne).style.display = "none";
     document.getElementById(displayThree).style.display = "none";
     document.getElementById(displayFour).style.display = "none";
@@ -100,10 +112,12 @@ document.querySelector("#Display2").addEventListener("click", function() {
 
     isTwoOpen = false;
   }
-});
+}
 
-document.querySelector("#Display3").addEventListener("click", function() {
+function display3(){
+  curr_display = 3;
   if(!isThreeOpen){
+    document.getElementById(displayThree).style.display = "";
     document.getElementById(displayThree).style.backgroundColor = "#3A506B";
     if(isLoaded){
       document.getElementById('more3').style.display = "flex";
@@ -112,6 +126,7 @@ document.querySelector("#Display3").addEventListener("click", function() {
       document.getElementById("loading3").style.display = "block";
     }
 
+    document.getElementById("options_bar").style.display = "flex";
     document.getElementById(displayTwo).style.display = "none";
     document.getElementById(displayOne).style.display = "none";
     document.getElementById(displayFour).style.display = "none";
@@ -131,9 +146,12 @@ document.querySelector("#Display3").addEventListener("click", function() {
 
     isThreeOpen = false;
   }
-});
-document.querySelector("#Display4").addEventListener("click", function() {
+}
+
+function display4(){
+  curr_display = 4;
   if(!isFourOpen){
+    document.getElementById(displayFour).style.display = "";
     document.getElementById(displayFour).style.backgroundColor = "#3A506B";
     if(isLoaded){
       document.getElementById('more4').style.display = "flex";
@@ -142,6 +160,7 @@ document.querySelector("#Display4").addEventListener("click", function() {
       document.getElementById("loading4").style.display = "block";
     }
 
+    document.getElementById("options_bar").style.display = "flex";
     document.getElementById(displayTwo).style.display = "none";
     document.getElementById(displayThree).style.display = "none";
     document.getElementById(displayOne).style.display = "none";
@@ -161,9 +180,14 @@ document.querySelector("#Display4").addEventListener("click", function() {
 
     isFourOpen = false;
   }
-});
-document.querySelector("#Display5").addEventListener("click", function() {
+}
+
+function display5(){
+  curr_display = 5;
+  console.log('Display 5 Called')
   if(!isFiveOpen){
+    // document.getElementById("fa-chevron-right").style.visibility = "hidden";
+    document.getElementById(displayFive).style.display = "";
     document.getElementById(displayFive).style.backgroundColor = "#3A506B";
     if(isLoaded){
       document.getElementById('more5').style.display = "flex";
@@ -172,6 +196,7 @@ document.querySelector("#Display5").addEventListener("click", function() {
       document.getElementById("loading5").style.display = "block";
     }
 
+    document.getElementById("options_bar").style.display = "flex";
     document.getElementById(displayTwo).style.display = "none";
     document.getElementById(displayThree).style.display = "none";
     document.getElementById(displayFour).style.display = "none";
@@ -184,6 +209,7 @@ document.querySelector("#Display5").addEventListener("click", function() {
     document.getElementById(displayFive).style.backgroundColor = "";
     document.getElementById("loading5").style.display = "none";
 
+    // document.getElementById("fa-chevron-right").style.visibility = "";
     document.getElementById(displayTwo).style.display = "";
     document.getElementById(displayThree).style.display = "";
     document.getElementById(displayFour).style.display = "";
@@ -191,7 +217,109 @@ document.querySelector("#Display5").addEventListener("click", function() {
 
     isFiveOpen = false;
   }
+}
+
+document.querySelector("#Display1").addEventListener("click", function() {
+  curr_display = 1;
+  display1();
+  console.log(curr_display);
 });
+
+document.querySelector("#Display2").addEventListener("click", function() {
+  curr_display = 2;
+  display2();
+  console.log(curr_display);
+});
+
+document.querySelector("#Display3").addEventListener("click", function() {
+  curr_display = 3;
+  display3();
+  console.log(curr_display);
+});
+
+document.querySelector("#Display4").addEventListener("click", function() {
+  curr_display = 4;
+  display4();
+  console.log(curr_display);
+});
+
+document.querySelector("#Display5").addEventListener("click", function() {
+  curr_display = 5;
+  display5();
+  console.log(curr_display);
+});
+
+
+document.querySelector("#go-forward").addEventListener("click", function() {
+  curr_display++;
+  console.log(curr_display);
+  if(curr_display == 2){
+    display1();
+    display2();
+  }
+  else if(curr_display == 3){
+    display2();
+    display3();
+  }
+  else if(curr_display == 4){
+    display3();
+    display4();
+  }
+  else if(curr_display == 5){
+    display4();
+    display5();
+  }
+  else if(curr_display == 6){
+    display5();
+    display1();
+  }
+});
+
+document.querySelector("#go-back").addEventListener("click", function() {
+  curr_display--;
+  console.log(curr_display);
+  if(curr_display == 0){
+    display1();
+    display5();
+    curr_display 
+  }
+  if(curr_display == 1){
+    display2();
+    display1();
+  }
+  else if(curr_display == 2){
+    display3();
+    display2();
+  }
+  else if(curr_display == 3){
+    display4();
+    display3();
+  }
+  else if(curr_display == 4){
+    display5();
+    display4();
+  }
+});
+
+document.querySelector("#go-home").addEventListener("click", function() {
+  console.log(curr_display);
+  if(curr_display == 1){
+    display1();
+  }
+  else if(curr_display == 2){
+    display2();
+  }
+  else if(curr_display == 3){
+    display3();
+  }
+  else if(curr_display == 4){
+    display4();
+  }
+  else if(curr_display == 5){
+    display5();
+  }
+});
+  
   
 
 

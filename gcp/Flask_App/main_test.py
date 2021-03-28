@@ -18,10 +18,12 @@ def RetreiveNews(cat):
     # following query parameters are used
     # source, sortBy and apiKey
     call_success = False
+    curr_key = 0
 
     while call_success == False:
-        apiKeysList = ["d7fa03ba28f94eba97ffb5276cca060a", "716c0526d1fc42008fdfd127fc0d6f9e", "a9e142b8b32a460497c02018511fbb65", "3670b6fd717a4ad0a49ba042649edef7", "196537e4a5814693b334cac3e4723a38", "39810cc78e384d3a9c416070fdeddc64"]
-        apiKey = random.choice(apiKeysList)
+        apiKeysList = ["f614de16d9154bbab2fefbfb24771ac9", "1c1a415df0f04b0199236dec9d3baf56", "0b9e04a358b84f0f894b7d20bad06a45", "d7fa03ba28f94eba97ffb5276cca060a", "716c0526d1fc42008fdfd127fc0d6f9e", "a9e142b8b32a460497c02018511fbb65", "3670b6fd717a4ad0a49ba042649edef7", "196537e4a5814693b334cac3e4723a38", "39810cc78e384d3a9c416070fdeddc64"]
+        apiKey = apiKeysList[curr_key]
+        print(curr_key)
         print(apiKey)
 
         
@@ -39,11 +41,9 @@ def RetreiveNews(cat):
           article = top_articles["articles"]  
         except KeyError as e:
             call_success = False
+            curr_key = curr_key + 1
             continue
         call_success = True
-
-    
-    
 
     results = []
 
@@ -52,22 +52,32 @@ def RetreiveNews(cat):
 
     return results
 
-
 def listFill(category_list, top_results, used_articles):
 
     cat_num = len(category_list)
     if cat_num == 0:
         category_list = ['general']
-        cat_num = 1
 
-    cur_cat = 0
-    while(len(top_results) < 5): #if list is not full we will pull articles from a random category
-        cat = category_list[cur_cat%cat_num] 
-        for ar in RetreiveNews(cat):
+    article_list = []
+    for cat in category_list:
+        temp_list = RetreiveNews(cat)
+        for ar in temp_list:
             if ar not in top_results and ar not in used_articles:
-                top_results.append(ar)
-                cur_cat = cur_cat + 1
+                article_list.append(ar)
+            if len(article_list) != 0 and len(article_list)%5 == 0:
                 break
+ 
+    curr_cat = 0
+    while(len(top_results) < 5): #if list is not full we will pull articles from a random category
+        if curr_cat >= len(article_list):
+            curr_cat = 0
+        ar = article_list[curr_cat]
+        if ar not in top_results and ar not in used_articles:
+            top_results.append(ar)
+            curr_cat = int(curr_cat/5 + 5)
+        else:
+            curr_cat = curr_cat + 1
+
 
     return top_results
 
@@ -95,8 +105,8 @@ def getTop5(category_list):
 
 
     #Fill in extra categories if still missing
-    used_articles = []
-    top_results = listFill(category_list, top_results, used_articles)
+    used_results = []
+    top_results = listFill(category_list, top_results, used_results)
 
     return top_results
 
@@ -104,36 +114,39 @@ def getTop5(category_list):
 def NewsHeadlines():
     print('Starting NewsHeadlines')
 
-    # Get data from url
-    
-    cat_list = ['technology', 'sports', 'business']
-    used_articles = []
-
+    cat_list = ['sports']
     
     top_results = getTop5(cat_list)
  
     # empty list which will 
     # contain all trending news
+    print('Filtering Results')
     filtered_results = []
+    used_articles = []
+
     
     article_num = 0
     #iterate through top articles
     while(len(filtered_results) < 5):
+        article_num = 0
         for ar in top_results:
             isUnique = True
+
             for i in range(len(filtered_results)):
                 #check if article is unique
-                if(fuzz.ratio(ar["title"], filtered_results[i]["title"]) > 40):  
+                if((fuzz.ratio(ar["title"], filtered_results[i]["title"]) > 40)):  
                         isUnique = False
                         break
 
             #If article is not unique replace it
             if(not isUnique):
-                top_results.pop(article_num)
+                used_articles.append(top_results.pop(article_num))
                 top_results = listFill(cat_list, top_results, used_articles)
+                article_num = article_num + 1 
             #If article is unique add it to the list
             else:
                 filtered_results.append(ar)
+                used_articles.append(ar)
                 if(len(filtered_results) == 5):
                     break
                 article_num = article_num + 1 

@@ -142,12 +142,49 @@ a.botflex:visited{
     animation-delay: 0.75s;
 }
 
+#options_bar{
+    display: none;
+    justify-content: space-between;
+}
 .fa-arrow-circle-right{
     opacity: 1;
     transition: opacity 0.2s ease-in-out;
     font-size: 20px;
 }
 .fa-arrow-circle-right:hover{
+    opacity: 0.4;
+}
+
+.fa-chevron-left{
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    font-size: 30px;
+    margin-left: 10px;
+    color:white
+}
+.fa-chevron-left:hover{
+    opacity: 0.4;
+}
+
+.fa-chevron-right{
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    font-size: 30px;
+    margin-right: 10px;
+    color:white
+}
+.fa-chevron-right:hover{
+    opacity: 0.4;
+}
+
+.fa-home-lg-alt{
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    font-size: 30px;
+    margin-bottom: 10px;
+    color:white
+}
+.fa-home-lg-alt:hover{
     opacity: 0.4;
 }
 
